@@ -11,8 +11,10 @@ class CommentController
 
 	public function postComment($postId, $author, $content)
 	{
+		$clean_author = htmlentities($author);
+		$clean_content = htmlentities($content);
 		if (!$this->postController->postExist($postId)){throw new Exception ('Post inexistant');}
-		$status = $this->commentManager->postComment($postId, $author, $content);
+		$status = $this->commentManager->postComment($postId, $clean_author, $clean_content);
 		return (!!$status);
 	}
 
