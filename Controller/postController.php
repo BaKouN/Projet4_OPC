@@ -2,11 +2,11 @@
 
 require_once('./Model/PostManager.php');
 
-class postController
+class PostController
 {
 	function __construct()
 	{
-		$this->postManager = new PostManager();
+		$this->postManager = new postManager();
 	}
 
 	public function listPosts()
@@ -17,7 +17,7 @@ class postController
 
 	public function printPost($postID)
 	{
-			if ($this->postManager->postExist($postID))
+			if ($this->postExist($postID))
 			{
 				$post = $this->postManager->getPost($postID);
 				require('view/frontend/postView.php');
@@ -27,5 +27,9 @@ class postController
 				throw new Exception('Ce post n\'existe pas');
 			}
 	}
-} 
 
+	public function postExist($postID)
+	{
+		return $this->postManager->postExist($postID);
+	}
+} 

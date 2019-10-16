@@ -59,8 +59,9 @@ h2
 	overflow:hidden
 }
 
-h3
+.author
 {
+	font-weight: bold;
 	width:100%;
 	padding:10px;
 	background:lightgreen;

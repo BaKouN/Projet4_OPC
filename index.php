@@ -20,7 +20,7 @@ try {
 	{
 		if ($URL[0] == 'post')
 		{
-			$postController= new postController();
+			$postController = new postController();
 			if (!isset($URL[1]) || empty($URL[1]))
 			{
 				$postController->listPosts();
@@ -41,17 +41,55 @@ try {
 				} 
 				else
 				{
-					throw new Exception('El famoso Error 404 !');
+					throw new Exception('El famoso Error 404 ! : Un post doit etre suivi d\'un numéro mon pote...');
 				}
 			}
 		}
-		else if ($URL[0] == 'admin')
+		else if ($URL[0] === 'admin')
 		{
 			//BLABLABLA 
 		}
+		else if ($URL[0] === 'api')
+		{
+			if ($URL[1] === 'post')
+			{
+				$postController = new postController();
+				if(is_numeric($URL[2]))
+				{
+					$postID = $URL[2];
+					if($URL[3] === 'comment')
+					{
+						$commentController = new CommentController();
+						if (isset($URL[4]) && !empty($URL[4]))
+						{
+							if ($URL[4] === 'create')
+							{
+								$commentController->postComment($postID, $_POST['author'], $_POST['content']);
+							}
+						}  
+						else 
+						{
+							$commentController->getComments($postID);
+						}
+					}
+					else 
+					{
+						throw new Exception('L\'API ne sert pas à ca, dis donc...');
+					}
+				} 
+				else
+				{
+					throw new Exception('Qu\'est ce que tu viens chercher ?');
+				}
+			} 
+			else 
+			{
+				throw new Exception ('Tu t\'es perdu poto');
+			}
+		}
 		else
 		{
-			throw new Exception('El famoso Error 404 !');
+			throw new Exception('El famoso Error 404 ! : Ni post, ni Admin, ni api ... Je ne sais pas ce que tu recherches la...');
 		}
 	}
 }

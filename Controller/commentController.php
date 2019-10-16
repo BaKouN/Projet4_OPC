@@ -1,16 +1,23 @@
 <?php
 require_once('./Model/CommentManager.php');
 
-function addComment($postId, $author, $comment)
+class CommentController
 {
-    $commentManager = new CommentManager();
+	function __construct()
+	{
+		$this->commentManager = new CommentManager();
+		$this->postController = new PostController();
+	}
 
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+	public function postComment($postId, $author, $content)
+	{
+		if (!$this->postController->postExist($postId)){throw new Exception ('Post inexistant');}
+		$status = $this->commentManager->postComment($postId, $author, $content);
+		return (!!$status);
+	}
 
-    if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
-    }
-    else {
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
+	public function getComments($postId)
+	{
+		echo(json_encode($this->commentManager->getComments($postId)->fetchAll()));
+	}
+} 
