@@ -35,7 +35,6 @@ $('#trumbowyg-demo').trumbowyg({
 });
 </script>
 
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
