@@ -3,7 +3,7 @@
 require('Controller/commentController.php');
 require('Controller/postController.php');
 
-$GLOBALS['websitePath'] = 'http://localhost/Projet4';
+$GLOBALS['websitePath'] = 'http://localhost/Projet4_OPC';
 $URL = explode('/',$_SERVER['REQUEST_URI']);
 array_shift($URL);
 array_shift($URL);

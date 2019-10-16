@@ -1,4 +1,4 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /Projet4/index.php?path=$1 [NC,L,QSA]
+RewriteRule ^(.*)$ /Projet4_OPC/index.php?path=$1 [NC,L,QSA]
