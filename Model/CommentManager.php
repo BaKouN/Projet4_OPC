@@ -10,12 +10,38 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    public function postComment($postId, $author, $comment)
+    public function createComment($postId, $author, $comment)
     {
-        $comments = $this->db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-        $affectedLines = $comments->execute(array($postId, $author, $comment));
-
-        return $affectedLines;
+        $comment = $this->db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+		$status = $comment->execute(array($postId, $author, $comment));
+		
+        return $status;
     }
 
+	public function commentExist($commentId)
+	{
+		$req = $this->db->prepare("SELECT COUNT(*) FROM comments WHERE id = ?");
+		$req->execute(array($commentId));
+		$count = $req->fetch();
+		return !!$count[0];
+	}
+
+	public function deleteComment($commentId)
+	{
+		$req = $this->db->prepare('DELETE FROM comments WHERE id = ?');
+		$status = $req->execute(array($commentId));
+
+		return $status;
+	}
+
+	public function updateComment($commentId, $content)
+	{
+		$req = $this->db->prepare('UPDATE comments SET comment = ? WHERE id = ?');
+		$status = $req->execute(
+			array(
+				$content,
+				$commentId
+		));
+		return $status;
+	}
 }

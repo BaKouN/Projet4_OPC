@@ -30,18 +30,11 @@ try {
 				if(is_numeric($URL[1]))
 				{
 					$postID = $URL[1];
-					if (isset($URL['2']) && !empty($URL[2]))
-					{
-						// BLABLALBLALBLA ( CA VA ETRE LES TRUCS GENRE: "COMMENT"/"REPORT" )
-					}
-					else 
-					{
-						$postController->printPost($postID);
-					}
+					$postController->printPost($postID);
 				} 
 				else
 				{
-					throw new Exception('El famoso Error 404 ! : Un post doit etre suivi d\'un numéro mon pote...');
+					throw new Exception('Un post doit etre ciblé d\un ID');
 				}
 			}
 		}
@@ -54,17 +47,49 @@ try {
 			if ($URL[1] === 'post')
 			{
 				$postController = new postController();
-				if(is_numeric($URL[2]))
+				if ($URL[2] === 'create')
+				{
+					if (!isset($_POST['title']) || !isset($_POST['content']) || empty($_POST['title']) || empty($_POST['content'])) throw new Exception ('Impossible d\'upload le post : Titre ou Contenu manquant !');
+					$postController->createPost($_POST['title'],$_POST['content']);
+				}
+				else if(is_numeric($URL[2]))
 				{
 					$postID = $URL[2];
-					if($URL[3] === 'comment')
+					if ($URL[3] === 'update')
+					{
+						if(!isset($_POST['title']) || empty($_POST['title']) || !isset($_POST['content']) || empty($_POST['content'])) throw new Exception ('Billet non conforme !');
+						$postController->updatePost($postID, $_POST['title'], $_POST['content']);
+					}
+					else if ($URL[3] === 'delete')
+					{
+						$postController->deletePost($postID);
+					}
+					else if($URL[3] === 'comment')
 					{
 						$commentController = new CommentController();
 						if (isset($URL[4]) && !empty($URL[4]))
 						{
 							if ($URL[4] === 'create')
 							{
-								$commentController->postComment($postID, $_POST['author'], $_POST['content']);
+								if (!isset($_POST['author']) || !isset($_POST['content']) || empty($_POST['author']) || empty($_POST['content'])) throw new Exception ('Commentaire vide !');
+								$commentController->createComment($postID, $_POST['author'], $_POST['content']);
+							}
+							else if (is_numeric($URL[4]))
+							{
+								$commentID = $URL[4];
+								if ($URL[5] === 'update')
+								{
+									if (!isset($_POST['content']) || empty($_POST['content'])) throw new Exception ('Commentaire vide !');
+									$commentController->updateComment($commentID, $_POST['content']);
+								}
+								else if ($URL[5] === 'delete')
+								{
+									$commentController->deleteComment($commentID);
+								}
+							}
+							else 
+							{
+								throw new Exeption('Erreur API : pas d\'ID pour le commentaire ni de create');
 							}
 						}  
 						else 
