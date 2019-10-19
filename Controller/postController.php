@@ -6,7 +6,7 @@ class PostController
 {
 	function __construct()
 	{
-		$this->postManager = new postManager();
+		$this->postManager = new PostManager();
 	}
 
 	public function listPosts()
@@ -28,7 +28,7 @@ class PostController
 		}
 	}
 
-	public function postExist($postID)
+	protected function postExist($postID)
 	{
 		return $this->postManager->postExist($postID);
 	}

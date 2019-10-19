@@ -1,7 +1,8 @@
 <?php // ROUTEUR
-
+session_start();
 require('Controller/commentController.php');
 require('Controller/postController.php');
+require('Controller/userController.php');
 
 $GLOBALS['websitePath'] = 'http://localhost/Projet4_OPC';
 $URL = explode('/',$_SERVER['REQUEST_URI']);
@@ -38,9 +39,10 @@ try {
 				}
 			}
 		}
-		else if ($URL[0] === 'admin')
+		else if ($URL[0] === 'login')
 		{
-			//BLABLABLA 
+			$userController  = new UserController();
+			$userController->printLoginPage();
 		}
 		else if ($URL[0] === 'api')
 		{
@@ -106,7 +108,13 @@ try {
 				{
 					throw new Exception('Qu\'est ce que tu viens chercher ?');
 				}
-			} 
+			}
+			else if ($URL[1] === 'login')
+			{
+				$userController  = new UserController();
+				if (!isset($_POST['login']) || !isset($_POST['password']) || empty($_POST['login']) || empty($_POST['password'])) throw new Exception ('INFOS LOGIN VIDE');
+				$userController->loginUser($_POST['login'],$_POST['password']);
+			}
 			else 
 			{
 				throw new Exception ('Tu t\'es perdu poto');
@@ -114,7 +122,7 @@ try {
 		}
 		else
 		{
-			throw new Exception('El famoso Error 404 ! : Ni post, ni Admin, ni api ... Je ne sais pas ce que tu recherches la...');
+			throw new Exception('El famoso Error 404 ! : Ni post, ni login, ni api ... Je ne sais pas ce que tu recherches la...');
 		}
 	}
 }

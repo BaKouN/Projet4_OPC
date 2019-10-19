@@ -4,6 +4,13 @@ body
 	font-family: 'Open Sans', sans-serif;
 }
 
+*
+{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
 header
 {
 	display:block;
@@ -74,4 +81,113 @@ h2
 	background: darkslategray;
 	padding:10px;
 	border-radius:20px;
+}
+
+.loginBox
+{
+	display:flex;
+	flex-flow: column nowrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+	padding: 30px;
+	width: 300px;
+	background:aquamarine;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform : translate(-50%,-50%);
+}
+
+.loginBox>input
+{
+	margin:7px;
+	padding: 3px 3px 3px 7px;
+}
+
+
+
+
+
+
+
+
+
+body>ul.notifications
+{
+  width: 95%;
+  max-width: 250px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  overflow: hidden;
+}
+
+body>ul.notifications>li.message
+{
+  background-image: linear-gradient(to right, #070735, #0a173b, #142240, #202d43, #2e3846);
+  border-radius : 5px;
+  margin-top: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 75px;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+  overflow: hidden;
+  position: relative;
+}
+
+body>ul.notifications>li.message>div.container
+{
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 15px 15px;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+}
+
+body>ul.notifications>li.message>div.container>span.name
+{
+  color: #FFFFFF;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 500;
+}
+
+body>ul.notifications>li.message>div.close
+{
+  position: absolute;
+  background-color: #FF462E;
+  height: 30px;
+  width: 30px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+body>ul.notifications>li.message>div.close:before
+{
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #FFFFFF;
+  width: 20px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+body>ul.notifications>li.message>div.close:after
+{
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #FFFFFF;
+  width: 20px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
