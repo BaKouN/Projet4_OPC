@@ -9,8 +9,9 @@
 <ul class="notifications"></ul>
 
 <script>
+
 	class UploadContainer
-	{
+	{ // MODAL LOGIN
 		constructor(elem)
 		{
 			this.target = elem;
@@ -39,11 +40,6 @@
 		}
 	}
 
-
-
-
-
-
 	$('.loginBox>input[type="submit"]').click((e) => {
 		e.preventDefault();
 		e.stopPropagation();
@@ -59,18 +55,21 @@
 				password: password
 			}
 		}).done((data) =>{
-			var container = new UploadContainer($("ul.notifications")); // Set container
-			if (data === 'Erreur Authentification : Utilisateur inexistant !') {
+
+			var container = new UploadContainer($("ul.notifications"));
+			if (data == 'Erreur Authentification : Utilisateur inexistant !') {
 				var modal = container.addMessage("Utilisateur inexistant !");
 			}
-			else if (data === 'Erreur Authentification : Mot de passe éronné !') {
+			else if (data == 'Erreur Authentification : Mot de passe éronné !') {
 				var modal = container.addMessage("Mot de passe éronné !");
 			}
-			else if (data === 'Erreur Authentification : Token non généré !') {
+			else if (data == 'Erreur Authentification : Token non généré !') {
 				var modal = container.addMessage("Token non généré !");
 			}
 			else {
-				console.log(data);
+				setCookie('token', data.token);
+				let token = getCookie('token');
+				window.location.replace("<?=$GLOBALS['websitePath']?>");
 			}
 		});	
 	});

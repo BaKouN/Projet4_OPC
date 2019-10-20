@@ -1,7 +1,6 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
 <div class="ticket">
 	<h2><?= htmlspecialchars($post['title']);?></h2>
 	<em><?= $post['creation_date_fr'];?></em>

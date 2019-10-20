@@ -44,6 +44,11 @@ try {
 			$userController  = new UserController();
 			$userController->printLoginPage();
 		}
+		else if ($URL[0] === 'logout')
+		{
+			$userController  = new UserController();
+			$userController->userLogout();
+		}
 		else if ($URL[0] === 'api')
 		{
 			if ($URL[1] === 'post')
@@ -113,7 +118,7 @@ try {
 			{
 				$userController  = new UserController();
 				if (!isset($_POST['login']) || !isset($_POST['password']) || empty($_POST['login']) || empty($_POST['password'])) throw new Exception ('INFOS LOGIN VIDE');
-				$userController->loginUser($_POST['login'],$_POST['password']);
+				$userController->userLogin($_POST['login'],$_POST['password']);
 			}
 			else 
 			{

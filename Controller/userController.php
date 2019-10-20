@@ -27,31 +27,48 @@ class UserController
 
 	public function printLoginPage()
 	{
-		// check session, 
-		// si session 1 -> Index
-		// Si session 0 -> loginView
-		require('./View/Frontend/loginView.php');
+		require('View/loginView.php');
 	}
 
-	public function loginUser($login, $password)
+	public function userLogin($login, $password)
 	{
 		if(!$this->userExist($login)) {
-			echo 'Erreur Authentification : Utilisateur inexistant !';
+			echo json_encode('Erreur Authentification : Utilisateur inexistant !');
 			return;}
 
 		if (!$this->checkCredentials($login,$password)) {
-			echo 'Erreur Authentification : Mot de passe éronné !';
+			echo json_encode('Erreur Authentification : Mot de passe éronné !');
 			return;}
 
 		$token = bin2hex(random_bytes(32));
 		if (!$this->setToken($login, $token)) {
-			echo 'Erreur Authentification : Token non généré !';
+			echo json_encode('Erreur Authentification : Token non généré !');
 			return;}
 
 		$_SESSION['token']=$token;
 		$_SESSION['token_expiration_date']="";
 		$_SESSION['connected']=true;
+		$user = $this->findUserByToken($token);
+		$_SESSION['rank']=$user['rank'];
 
 		echo json_encode($_SESSION);
+	}
+
+	public function userLogout()
+	{
+		if(isset($_SESSION['connected']) && $_SESSION['connected'] == true)
+		{
+			$user = $this->findUserByToken($_SESSION['token']);
+			if(!$user) throw new Exception ('Token expiré');
+			$this->setToken($user['username'], "");
+			unset($_SESSION);
+			session_destroy();
+		}
+		header('location: '.$GLOBALS['websitePath']);
+	}
+
+	public function findUserByToken($token)
+	{
+		return $this->userManager->findUserByToken($token);
 	}
 }

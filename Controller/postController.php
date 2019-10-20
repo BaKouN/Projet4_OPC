@@ -12,7 +12,7 @@ class PostController
 	public function listPosts()
 	{
 		$posts = $this->postManager->getPosts();
-		require('view/frontend/listPostsView.php');
+		require('view/listPostsView.php');
 	}
 
 	public function printPost($postID)
@@ -20,7 +20,7 @@ class PostController
 		if ($this->postExist($postID))
 		{
 			$post = $this->postManager->getPost($postID);
-			require('view/frontend/postView.php');
+			require('view/postView.php');
 		}	
 		else 
 		{

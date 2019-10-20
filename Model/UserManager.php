@@ -30,4 +30,12 @@ class UserManager extends Manager
 
 		return $status;
 	}
+
+	public function findUserByToken($token)
+	{
+		$req = $this->db->prepare("SELECT * FROM users WHERE token = ?");
+		$req->execute(array($token));
+		$user = $req->fetch();
+		return $user;
+	}
 }
