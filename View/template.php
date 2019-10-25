@@ -63,7 +63,7 @@
 				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/login">Connexion</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Inscription</a>
+				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/register">Inscription</a>
 			</li>
 			<?php } ?>
 		</ul>

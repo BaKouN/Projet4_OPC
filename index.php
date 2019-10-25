@@ -42,12 +42,17 @@ try {
 		else if ($URL[0] === 'login')
 		{
 			$userController  = new UserController();
-			$userController->printLoginPage();
+			$userController->printLoginView();
 		}
 		else if ($URL[0] === 'logout')
 		{
 			$userController  = new UserController();
 			$userController->userLogout();
+		}
+		else if ($URL[0] === 'register')
+		{
+			$userController  = new UserController();
+			$userController->printRegisterView();
 		}
 		else if ($URL[0] === 'api')
 		{
@@ -114,15 +119,24 @@ try {
 					throw new Exception('Qu\'est ce que tu viens chercher ?');
 				}
 			}
-			else if ($URL[1] === 'login')
+			else if ($URL[1] === 'user')
 			{
-				$userController  = new UserController();
-				if (!isset($_POST['login']) || !isset($_POST['password']) || empty($_POST['login']) || empty($_POST['password'])) throw new Exception ('INFOS LOGIN VIDE');
-				$userController->userLogin($_POST['login'],$_POST['password']);
-			}
-			else 
-			{
-				throw new Exception ('Tu t\'es perdu poto');
+				if ($URL[2] === 'login')
+				{
+					$userController  = new UserController();
+					if (!isset($_POST['login']) || !isset($_POST['password']) || empty($_POST['login']) || empty($_POST['password'])) throw new Exception ('INFOS LOGIN VIDE');
+					$userController->userLogin($_POST['login'],$_POST['password']);
+				}
+				else if ($URL[2] === 'register')
+				{
+					$userController  = new UserController();
+					if (!isset($_POST['login']) || !isset($_POST['password']) || empty($_POST['login']) || empty($_POST['password']) || !isset($_POST['password2']) || empty($_POST['password2'])) throw new Exception ('INFOS REGISTER VIDE');
+					$userController->userRegister($_POST['login'], $_POST['password'], $_POST['password2']);
+				}
+				else
+				{
+					throw new Exception ('API::USER mais en dehors du CRUD, sérieusement ?');
+				}
 			}
 		}
 		else

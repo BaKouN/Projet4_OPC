@@ -17,7 +17,7 @@ class UserController
 	protected function  checkCredentials($login,$password)
 	{
 		$user = $this->userManager->getUser($login);
-		return ($user['password'] === $password);
+		return password_verify($password, $user['password']);
 	}
 
 	protected function setToken($login, $token)
@@ -25,10 +25,18 @@ class UserController
 		return $this->userManager->setToken($login, $token);
 	}
 
-	public function printLoginPage()
+	protected function passwordMatch($password, $password2)
+	{
+		if($password === $password2) return true;
+		return false;
+	}
+
+	public function printLoginView()
 	{
 		require('View/loginView.php');
 	}
+
+
 
 	public function userLogin($login, $password)
 	{
@@ -65,6 +73,32 @@ class UserController
 			session_destroy();
 		}
 		header('location: '.$GLOBALS['websitePath']);
+	}
+
+	public function userRegister($login, $password, $password2)
+	{
+		// verifier si le nom d'utilisateur est déjà pris
+		if($this->userExist($login))
+		{
+			echo json_encode('Erreur Inscription : Nom d\'utilisateur déjà utilisé !');
+			return;}
+		// verifier si les deux mots de passes sont les memes
+		if(!$this->passwordMatch($password, $password2))
+		{
+			echo json_encode('Erreur Inscription : Les deux mots de passes ne correspondent pas !');
+			return;}
+			// sinon autoriser l'inscription
+		// IMPORTANT : DEMANDER A STAN COMMENT CHECKER AVEC LE STATUT MAIS NE PAS LANCER LA FONCTION DEUX FOIS (UN IF ! ET UN IF SANS  ????)
+		echo json_encode('Inscription effectué ! Vous serez redirigé vers l\'accueil dans un instant !');
+		$hashPassword = password_hash($password , PASSWORD_DEFAULT);
+		$this->userManager->UserRegister($login, $hashPassword);
+	}
+
+	
+
+	public function printRegisterView()
+	{
+		require("View/registerView.php");
 	}
 
 	public function findUserByToken($token)
