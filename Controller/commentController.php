@@ -20,7 +20,7 @@ class CommentController
 
 	public function getComments($postId)
 	{
-		echo(json_encode($this->commentManager->getComments($postId)->fetchAll()));
+		echo(json_encode($this->commentManager->getComments($postId)));
 	}
 
 	protected function commentExist($commentID)

@@ -5,7 +5,7 @@
 
 
 <?php
-while ($post = $posts->fetch())
+foreach ($posts as $post )
 {
 ?>
     <div class="post">
@@ -24,8 +24,5 @@ while ($post = $posts->fetch())
     </div>
 <?php
 }
-$posts->closeCursor();
-?>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+$content = ob_get_clean(); 
+require_once('template.php'); ?>

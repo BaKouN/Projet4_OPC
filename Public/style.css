@@ -107,9 +107,20 @@ h2
 .navbar
 {
 	justify-content: space-between;
+	background:darkseagreen;
 }
 
+.postOptions
+{
+	display:flex;
+	flex-direction:row;
+	justify-content: space-evenly;
+}
 
+.ticket>h2
+{
+	margin:auto;
+}
 
 
 

@@ -68,6 +68,7 @@
 			}
 			else {
 				setCookie('token', data.token);
+				setCookie('login', data.username);
 				let token = getCookie('token');
 				window.location.replace("<?=$GLOBALS['websitePath']?>");
 			}
@@ -76,4 +77,4 @@
 </script>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require_once('template.php'); ?>

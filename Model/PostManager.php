@@ -6,16 +6,18 @@ class PostManager extends Manager
     public function getPosts()
     {
         $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
-
-        return $req;
+		$posts = $req->fetchAll();
+		$req->closeCursor();
+        return $posts;
     }
 
     public function getPost($postId)
     {
         $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
-        $post = $req->fetch();
-
+		$post = $req->fetch();
+		$req->closeCursor();
+		
         return $post;
 	}
 	
@@ -24,6 +26,8 @@ class PostManager extends Manager
 		$req = $this->db->prepare("SELECT COUNT(*) FROM posts WHERE id = ?");
 		$req->execute(array($postId));
 		$count = $req->fetch();
+		$req->closeCursor();
+		
 		return !!$count[0];
 	}
 
@@ -35,7 +39,8 @@ class PostManager extends Manager
 				$title,
 				$content
 			));
-
+		$post->closeCursor();
+		
         return $status;
     }
 
@@ -43,7 +48,8 @@ class PostManager extends Manager
 	{
 		$req = $this->db->prepare('DELETE FROM posts WHERE id = ?');
 		$status = $req->execute(array($postId));
-
+		$req->closeCursor();
+		
 		return $status;
 	}
 
@@ -56,6 +62,7 @@ class PostManager extends Manager
 				$content,
 				$postId
 		));
+		$req->closeCursor();
 		
 		return $status;
 	}

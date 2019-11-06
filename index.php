@@ -1,9 +1,12 @@
 <?php // ROUTEUR
 session_start();
-require('Controller/commentController.php');
-require('Controller/postController.php');
-require('Controller/userController.php');
+require_once('Controller/commentController.php');
+require_once('Controller/postController.php');
+require_once('Controller/userController.php');
+require_once('Controller/adminController.php');
+require_once('Model/Manager.php');
 
+$GLOBALS['dbConnected']=false;
 $GLOBALS['websitePath'] = 'http://localhost/Projet4_OPC';
 $URL = explode('/',$_SERVER['REQUEST_URI']);
 array_shift($URL);
@@ -53,6 +56,11 @@ try {
 		{
 			$userController  = new UserController();
 			$userController->printRegisterView();
+		}
+		else if ($URL[0] === 'adminPanel')
+		{
+			$adminController = new AdminController();
+			$adminController->printAdminPanel();
 		}
 		else if ($URL[0] === 'api')
 		{
@@ -144,7 +152,12 @@ try {
 			throw new Exception('El famoso Error 404 ! : Ni post, ni login, ni api ... Je ne sais pas ce que tu recherches la...');
 		}
 	}
+	if($GLOBALS['dbConnected']===true)
+	{
+		$Manager = new Manager();
+		$Manager->dbDisconnect();
+	}
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
-	require('view/errorView.php');
+	require_once('view/errorView.php');
 }

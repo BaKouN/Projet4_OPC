@@ -11,8 +11,14 @@ class PostController
 
 	public function listPosts()
 	{
+		$posts = $this->getPosts();
+		require_once('view/listPostsView.php');
+	}
+
+	public function getPosts()
+	{
 		$posts = $this->postManager->getPosts();
-		require('view/listPostsView.php');
+		return $posts;
 	}
 
 	public function printPost($postID)
@@ -20,7 +26,7 @@ class PostController
 		if ($this->postExist($postID))
 		{
 			$post = $this->postManager->getPost($postID);
-			require('view/postView.php');
+			require_once('view/postView.php');
 		}	
 		else 
 		{
@@ -35,6 +41,7 @@ class PostController
 
 	public function updatePost($postID, $title, $content)
 	{
+		$this->adminController = new AdminController();
 		if (!$this->postExist($postID))throw new Exception ('Billet inexistant');
 		$status = $this->postManager->updatePost($postID, $title, $content);
 		echo (!!$status);
@@ -42,6 +49,7 @@ class PostController
 
 	public function deletePost($postID)
 	{
+		$this->adminController = new AdminController();
 		if (!$this->postExist($postID)) throw new Exception ('Billet inexistant');
 		$status = $this->postManager->deletePost($postID);
 		echo (!!$status);
@@ -49,6 +57,7 @@ class PostController
 
 	public function createPost($title, $content)
 	{
+		$this->adminController = new AdminController();
 		$status = $this->postManager->createPost($title, $content);
 		echo (!!$status);
 	}

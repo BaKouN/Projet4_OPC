@@ -9,7 +9,7 @@ class UserController
 		$this->userManager = new UserManager();
 	}
 
-	protected function userExist($login)
+	public function userExist($login)
 	{
 		return $this->userManager->userExist($login);
 	}
@@ -33,7 +33,7 @@ class UserController
 
 	public function printLoginView()
 	{
-		require('View/loginView.php');
+		require_once('View/loginView.php');
 	}
 
 
@@ -52,7 +52,8 @@ class UserController
 		if (!$this->setToken($login, $token)) {
 			echo json_encode('Erreur Authentification : Token non généré !');
 			return;}
-
+		
+		$_SESSION['user']=$login;
 		$_SESSION['token']=$token;
 		$_SESSION['token_expiration_date']="";
 		$_SESSION['connected']=true;
@@ -98,7 +99,7 @@ class UserController
 
 	public function printRegisterView()
 	{
-		require("View/registerView.php");
+		require_once("View/registerView.php");
 	}
 
 	public function findUserByToken($token)

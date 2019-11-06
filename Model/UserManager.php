@@ -8,6 +8,7 @@ class UserManager extends Manager
 		$req = $this->db->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
 		$req->execute(array($login));
 		$count = $req->fetch();
+		$req->closeCursor();
 		return !!$count[0];
 	}
 
@@ -19,7 +20,8 @@ class UserManager extends Manager
 				$login,
 				$password
 			));
-
+		$user->closeCursor();
+		
         return $status;
 	}
 
@@ -28,6 +30,8 @@ class UserManager extends Manager
 		$req = $this->db->prepare("SELECT * FROM users WHERE username = ?");
 		$req->execute(array($login));
 		$user = $req->fetch();
+		$req->closeCursor();
+		
 		return $user;
 	}
 
@@ -39,7 +43,8 @@ class UserManager extends Manager
 				$token,
 				$login
 		));
-
+		$req->closeCursor();
+		
 		return $status;
 	}
 
@@ -48,6 +53,8 @@ class UserManager extends Manager
 		$req = $this->db->prepare("SELECT * FROM users WHERE token = ?");
 		$req->execute(array($token));
 		$user = $req->fetch();
+		$req->closeCursor();
+		
 		return $user;
 	}
 }
