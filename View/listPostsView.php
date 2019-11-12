@@ -5,6 +5,7 @@
 
 
 <?php
+$postController = new postController();
 foreach ($posts as $post )
 {
 ?>
@@ -12,11 +13,10 @@ foreach ($posts as $post )
 		<div class="ticket">
 			<h2>
 				<?= htmlspecialchars($post['title']) ?>
-				<em>le <?= $post['creation_date_fr'] ?></em>
 			</h2>
-			
+			<p><em>le <?= $post['creation_date_fr'] ?></em></p>
 			<p>
-				<?= nl2br(htmlspecialchars($post['content'])) ?>
+				<?= $postController->shortText(nl2br(htmlspecialchars($post['content']))) ?>
 				<br />
 				<em><a href="<?=$GLOBALS['websitePath']?>/post/<?=$post['id']?>">En savoir plus...</a></em>
 			</p>

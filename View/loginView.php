@@ -67,9 +67,9 @@
 				var modal = container.addMessage("Token non généré !");
 			}
 			else {
-				setCookie('token', data.token);
-				setCookie('login', data.username);
-				let token = getCookie('token');
+				// setCookie('token', data.token);
+				// setCookie('login', data.username);
+				// let token = getCookie('token');
 				window.location.replace("<?=$GLOBALS['websitePath']?>");
 			}
 		});	

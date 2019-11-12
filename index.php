@@ -63,13 +63,14 @@ try {
 			$adminController->printAdminPanel();
 		}
 		else if ($URL[0] === 'api')
-		{
+		{	
 			if ($URL[1] === 'post')
 			{
 				$postController = new postController();
 				if ($URL[2] === 'create')
 				{
 					if (!isset($_POST['title']) || !isset($_POST['content']) || empty($_POST['title']) || empty($_POST['content'])) throw new Exception ('Impossible d\'upload le post : Titre ou Contenu manquant !');
+					$adminController = new AdminController();
 					$postController->createPost($_POST['title'],$_POST['content']);
 				}
 				else if(is_numeric($URL[2]))
@@ -78,10 +79,12 @@ try {
 					if ($URL[3] === 'update')
 					{
 						if(!isset($_POST['title']) || empty($_POST['title']) || !isset($_POST['content']) || empty($_POST['content'])) throw new Exception ('Billet non conforme !');
+						$adminController = new AdminController();
 						$postController->updatePost($postID, $_POST['title'], $_POST['content']);
 					}
 					else if ($URL[3] === 'delete')
 					{
+						$adminController = new AdminController();
 						$postController->deletePost($postID);
 					}
 					else if($URL[3] === 'comment')
@@ -100,10 +103,12 @@ try {
 								if ($URL[5] === 'update')
 								{
 									if (!isset($_POST['content']) || empty($_POST['content'])) throw new Exception ('Commentaire vide !');
+									$adminController = new AdminController();
 									$commentController->updateComment($commentID, $_POST['content']);
 								}
 								else if ($URL[5] === 'delete')
 								{
+									$adminController = new AdminController();
 									$commentController->deleteComment($commentID);
 								}
 							}

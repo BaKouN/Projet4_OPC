@@ -34,7 +34,7 @@ class PostController
 		}
 	}
 
-	protected function postExist($postID)
+	public function postExist($postID)
 	{
 		return $this->postManager->postExist($postID);
 	}
@@ -50,8 +50,10 @@ class PostController
 	public function deletePost($postID)
 	{
 		$this->adminController = new AdminController();
+		$this->commentController = new CommentController();
 		if (!$this->postExist($postID)) throw new Exception ('Billet inexistant');
 		$status = $this->postManager->deletePost($postID);
+		$this->commentController->deleteRelatedComments($postID);
 		echo (!!$status);
 	}
 
@@ -60,5 +62,23 @@ class PostController
 		$this->adminController = new AdminController();
 		$status = $this->postManager->createPost($title, $content);
 		echo (!!$status);
+	}
+
+	public function shortText($input) 
+	{	
+		$length = 100;
+		if (strlen($input) <= $length)
+			return $input;
+	
+		$last_space = strrpos(substr($input, 0, $length), ' ');
+		if($last_space !== false) {
+			$trimmed_text = substr($input, 0, $last_space);
+		} else {
+			$trimmed_text = substr($input, 0, $length);
+		}
+
+			$trimmed_text .= '...';
+	
+		return $trimmed_text;
 	}
 } 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 06 nov. 2019 à 12:22
--- Version du serveur :  10.3.16-MariaDB
--- Version de PHP :  7.3.7
+-- Généré le :  Dim 20 oct. 2019 à 18:27
+-- Version du serveur :  10.4.8-MariaDB
+-- Version de PHP :  7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `localhost`
+-- Base de données :  `test`
 --
 
 -- --------------------------------------------------------
@@ -71,7 +71,9 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
 (1, 'Bienvenue sur mon blog !', 'Je vous souhaite à toutes et à tous la bienvenue sur mon blog qui parlera de... PHP bien sûr !', '2010-03-25 16:28:41'),
-(2, 'Le PHP à la conquête du monde !', 'C\'est officiel, l\'éléPHPant a annoncé à la radio hier soir \"J\'ai l\'intention de conquérir le monde !\".\r\nIl a en outre précisé que le monde serait à sa botte en moins de temps qu\'il n\'en fallait pour dire \"éléPHPant\". Pas dur, ceci dit entre nous...', '2010-03-27 18:31:11');
+(2, 'Le PHP à la conquête du monde !', 'C\'est officiel, l\'éléPHPant a annoncé à la radio hier soir \"J\'ai l\'intention de conquérir le monde !\".\r\nIl a en outre précisé que le monde serait à sa botte en moins de temps qu\'il n\'en fallait pour dire \"éléPHPant\". Pas dur, ceci dit entre nous...', '2010-03-27 18:31:11'),
+(6, 'TEST 2', '42 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', '2019-10-17 18:01:25'),
+(7, 'Je modifie tout ce que je veux, OK ?', 'Je suis vraiment le magicien aux yeux bleus héhéhéhéhéhéhéhéhéhhéhéhéhéhéhéhéhé', '2019-10-17 18:01:32');
 
 -- --------------------------------------------------------
 
@@ -92,10 +94,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `rank`, `token`) VALUES
-(1, 'test', '$2y$10$cF0bRxUK8oAqeCy12bVH5OlpjJPeRk17Wgbq/UyIzNHF0HIx7pS.y', 1, ''),
-(2, 'test2', '$2y$10$VVfxSkY.uRrHtoXcYlAvk.oeErS8bdUnrHXsv6NgaJD0muTlNjLNa', 0, 'e5c0bdc1a5181a36b1df0f14f0d034e279dc2ae4ed514dfaeaf8ae5bb50a11c0'),
-(3, 'BaKooN', '$2y$10$gQaLBW1nZQfyHri66GGa1emyCog6q6EclDnzbByxCQ1o3VfwVPMYq', 0, ''),
-(4, 'Stan', '$2y$10$ZcfWOgF.ezsZncfe2EDdn.EVxDnTfh02SxsZYv4MC.Wr90lZiB826', 0, '');
+(1, 'test', 'test', 1, ''),
+(2, 'test2', 'test2', 0, '');
 
 --
 -- Index pour les tables déchargées
@@ -139,7 +139,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

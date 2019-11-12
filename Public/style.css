@@ -2,6 +2,8 @@ body
 {
 	background:lightgrey;
 	font-family: 'Open Sans', sans-serif;
+	height:100%;
+	margin:0;
 }
 
 *
@@ -107,7 +109,7 @@ h2
 .navbar
 {
 	justify-content: space-between;
-	background:darkseagreen;
+	background:#2ecc71;
 }
 
 .postOptions
@@ -122,6 +124,24 @@ h2
 	margin:auto;
 }
 
+.add
+{
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	align-content:center;
+	color:#2ecc71;
+	border: 3px #2ecc71 dotted;
+	box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+	transition: box-shadow 0.5s ease-in;
+}
+
+.add:hover{
+	box-shadow: 	0 0 5px 2px lightgray,
+	0 0 10px 7px white,
+	0 0 15px 10px #2ecc71;
+}
 
 
 

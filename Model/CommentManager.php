@@ -5,7 +5,7 @@ class CommentManager extends Manager
 {
     public function getComments($postId)
     {
-        $req = $this->db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+        $req = $this->db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date');
 		$req->execute(array($postId));
 		$comments = $req->fetchAll();
 		$req->closeCursor();
@@ -37,6 +37,13 @@ class CommentManager extends Manager
 		$req->closeCursor();
 		
 		return $status;
+	}
+
+	public function deleteRelatedComments($postID)
+	{
+		$req = $this->db->prepare('DELETE * FROM comments WHERE post_id = ?');
+		$status = $req->execute(array($postID));
+		$req->closeCursor();
 	}
 
 	public function updateComment($commentId, $content)

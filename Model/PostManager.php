@@ -5,7 +5,7 @@ class PostManager extends Manager
 {
     public function getPosts()
     {
-        $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
+        $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
 		$posts = $req->fetchAll();
 		$req->closeCursor();
         return $posts;

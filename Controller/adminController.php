@@ -13,7 +13,7 @@ class AdminController
 			throw new Exception('Accès Refusé ! Vous n\'etes pas administrateur !');
 	}
 
-	function isAdmin($token)
+	public function isAdmin($token)
 	{
 		$this->userController = new userController();
 		if (!$this->userController->findUserByToken($token)) 

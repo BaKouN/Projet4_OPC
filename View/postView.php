@@ -60,7 +60,18 @@
 					content: content
 				}
 			}).done((data) =>{
-				console.log(data);
+				if (data == 1)
+				{
+					$("#comments").append(
+					`<li class="comments etheral" style="opacity: 0;transition: opacity 3s ease;">
+						<p class="author">` + author + `</p>
+						<p class="commentContent">` + content + `</p>
+					</li>`
+					);
+					setTimeout(() => {
+						$('.etheral').css('opacity', '1');
+					}, 1);
+				}
 			});
 		});
 	});

@@ -35,6 +35,11 @@ class CommentController
 		echo (!!$status);
 	}
 
+	public function deleteRelatedComments($postID)
+	{
+		$this->commentManager->deleteRelatedComments($postID);
+	}
+
 	public function updateComment($commentID, $content)
 	{
 		if (!$this->commentExist($commentID))throw new Exception ('Commentaire inexistant');
