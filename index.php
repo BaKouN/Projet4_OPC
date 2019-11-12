@@ -36,6 +36,10 @@ try {
 					$postID = $URL[1];
 					$postController->printPost($postID);
 				} 
+				else if ($URL[1] === 'create')
+				{
+					$postController->printCreateView();
+				}
 				else
 				{
 					throw new Exception('Un post doit etre ciblé d\un ID');

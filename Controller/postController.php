@@ -57,10 +57,17 @@ class PostController
 		echo (!!$status);
 	}
 
+	public function printCreateView()
+	{
+		$this->adminController = new AdminController();
+		require_once('view/CUView.php');
+	}
+
 	public function createPost($title, $content)
 	{
 		$this->adminController = new AdminController();
-		$status = $this->postManager->createPost($title, $content);
+		$cleanContent = htmlspecialchars($content);
+		$status = $this->postManager->createPost($title, $cleanContent);
 		echo (!!$status);
 	}
 

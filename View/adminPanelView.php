@@ -4,7 +4,7 @@
 <p>Panneau Admin</p>
 
 <div class="post">
-	<div class="ticket add">
+	<div class="ticket addPost">
 		<i class="far fa-plus-square"></i>
 		<p>Ajouter un post</p>
 	</div>
@@ -81,6 +81,18 @@ $('.deletePost').click((e) => {
 		else
 			var modal = container.addMessage("Erreur ! La bonne suppression du billet ne peut etre confirmée");
 	});	
+});
+
+$('.addPost').click((e)=> {
+	window.location.replace(`<?=$GLOBALS['websitePath']?>/post/create`);
+	// e.preventDefault();
+	// e.stopPropagation();
+	// $.ajax({  //CREATE POST
+	// 	url:'<?=$GLOBALS['websitePath']?>/api/post/create',
+	// 	method: "POST"
+	// }).done((data) =>{
+	// 	return data;
+	// });
 });
 </script>
 

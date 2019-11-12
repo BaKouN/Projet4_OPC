@@ -16,7 +16,7 @@ foreach ($posts as $post )
 			</h2>
 			<p><em>le <?= $post['creation_date_fr'] ?></em></p>
 			<p>
-				<?= $postController->shortText(nl2br(htmlspecialchars($post['content']))) ?>
+				<?= $postController->shortText(nl2br(htmlspecialchars_decode($post['content']))) ?>
 				<br />
 				<em><a href="<?=$GLOBALS['websitePath']?>/post/<?=$post['id']?>">En savoir plus...</a></em>
 			</p>

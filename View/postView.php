@@ -4,7 +4,7 @@
 <div class="ticket">
 	<h2><?= htmlspecialchars($post['title']);?></h2>
 	<em><?= $post['creation_date_fr'];?></em>
-	<p><?= nl2br(htmlspecialchars($post['content']));?></p>
+	<p><?= nl2br(htmlspecialchars_decode($post['content']));?></p>
 </div>
 <label for='author'>Pseudonyme : </label>
 <input type=text id='author' name='author'>
