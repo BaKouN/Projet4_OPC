@@ -34,7 +34,18 @@ try {
 				if(is_numeric($URL[1]))
 				{
 					$postID = $URL[1];
-					$postController->printPost($postID);
+					if(!isset($URL[2]) || empty($URL[2]))
+					{
+						$postController->printPost($postID);
+					}
+					else if($URL[2] === 'update')
+					{
+						$postController->printUpdateView($postID);
+					}
+					else
+					{
+						throw new Exception ('Le site est un peu rigide.. Il ne comprends pas ce que vous voulez à ce pauvre post !');
+					}
 				} 
 				else if ($URL[1] === 'create')
 				{

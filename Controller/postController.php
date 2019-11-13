@@ -20,18 +20,23 @@ class PostController
 		$posts = $this->postManager->getPosts();
 		return $posts;
 	}
-
-	public function printPost($postID)
+	
+	public function getPost($postID)
 	{
 		if ($this->postExist($postID))
 		{
 			$post = $this->postManager->getPost($postID);
-			require_once('view/postView.php');
+			return $post;
 		}	
 		else 
 		{
 			throw new Exception('Ce post n\'existe pas');
 		}
+	}
+	public function printPost($postID)
+	{
+			$post = $this->getPost($postID);
+			require_once('view/postView.php');
 	}
 
 	public function postExist($postID)
@@ -60,7 +65,16 @@ class PostController
 	public function printCreateView()
 	{
 		$this->adminController = new AdminController();
-		require_once('view/CUView.php');
+		require_once('view/createView.php');
+	}
+
+	public function printUpdateView($postID)
+	{
+		$this->adminController = new AdminController();
+		$post = $this->getPost($postID);
+		$postTitle = $post['title'];
+		$postContent = $post['content'];
+		require_once('view/updateView.php');
 	}
 
 	public function createPost($title, $content)

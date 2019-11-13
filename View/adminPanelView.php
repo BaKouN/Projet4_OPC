@@ -62,6 +62,16 @@ class UploadContainer
 	}
 }
 
+$('.addPost').click((e)=> {
+	window.location.replace(`<?=$GLOBALS['websitePath']?>/post/create`);
+});
+
+$('.updatePost').click((e) => {
+	e.preventDefault();
+	e.stopPropagation();
+	window.location.replace(`<?=$GLOBALS['websitePath']?>/post/${e.target.dataset.id}/update`);
+});
+
 $('.viewPost').click((e) => {
 	e.preventDefault();
 	e.stopPropagation();
@@ -73,7 +83,7 @@ $('.deletePost').click((e) => {
 	e.stopPropagation();
 	$.ajax({  //DELETE POST
 		url:'<?=$GLOBALS['websitePath']?>/api/post/' + e.target.dataset.id + '/delete',
-		method: "GET"
+		method: "DELETE"
 	}).done((data) =>{
 		var container = new UploadContainer($("ul.notifications"));
 		if (data == 1) 
@@ -81,18 +91,6 @@ $('.deletePost').click((e) => {
 		else
 			var modal = container.addMessage("Erreur ! La bonne suppression du billet ne peut etre confirmée");
 	});	
-});
-
-$('.addPost').click((e)=> {
-	window.location.replace(`<?=$GLOBALS['websitePath']?>/post/create`);
-	// e.preventDefault();
-	// e.stopPropagation();
-	// $.ajax({  //CREATE POST
-	// 	url:'<?=$GLOBALS['websitePath']?>/api/post/create',
-	// 	method: "POST"
-	// }).done((data) =>{
-	// 	return data;
-	// });
 });
 </script>
 
