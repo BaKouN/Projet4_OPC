@@ -40,9 +40,10 @@ class CommentController
 		$this->commentManager->deleteRelatedComments($postID);
 	}
 
-	public function updateComment($commentID, $content)
+	public function updateComment($commentID)
 	{
 		if (!$this->commentExist($commentID))throw new Exception ('Commentaire inexistant');
+		$content = '(Commentaire modéré par l\'administrateur.)';
 		$status = $this->commentManager->updateComment($commentID, $content);
 		echo (!!$status);
 	}

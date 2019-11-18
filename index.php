@@ -117,9 +117,8 @@ try {
 								$commentID = $URL[4];
 								if ($URL[5] === 'update')
 								{
-									if (!isset($_POST['content']) || empty($_POST['content'])) throw new Exception ('Commentaire vide !');
 									$adminController = new AdminController();
-									$commentController->updateComment($commentID, $_POST['content']);
+									$commentController->updateComment($commentID);
 								}
 								else if ($URL[5] === 'delete')
 								{
