@@ -9,12 +9,12 @@ class CommentController
 		$this->postController = new PostController();
 	}
 
-	public function createComment($postId, $author, $content)
+	public function createComment($postID, $author, $content)
 	{
 		$clean_author = htmlentities($author);
 		$clean_content = htmlentities($content);
-		if (!$this->postController->postExist($postId))throw new Exception ('Post inexistant');
-		$status = $this->commentManager->createComment($postId, $clean_author, $clean_content);
+		if (!$this->postController->postExist($postID))throw new Exception ('Post inexistant');
+		$status = $this->commentManager->createComment($postID, $clean_author, $clean_content);
 		echo (!!$status);
 	}
 
@@ -25,15 +25,15 @@ class CommentController
 		return $comment;
 	}
 
-	public function printCommentsJSON($postId)
+	public function printCommentsJSON($postID)
 	{
-		echo(json_encode($this->getComments($postId)));
+		echo(json_encode($this->getComments($postID)));
 	}
 
-	public function getComments($postId)
+	public function getComments($postID)
 	{
-		if (!$this->postController->postExist($postId)) throw new Exception ('Post inexistant');
-		return $this->commentManager->getComments($postId);
+		if (!$this->postController->postExist($postID)) throw new Exception ('Post inexistant');
+		return $this->commentManager->getComments($postID);
 	}
 
 	protected function commentExist($commentID)
@@ -66,6 +66,7 @@ class CommentController
 		if (!$this->commentExist($commentID))throw new Exception ('Commentaire inexistant');
 		$comment = $this->getComment($commentID);
 		if ($comment['reported'] != 0) throw new Exception ('Commentaire non signalable.');
-		$this->commentManager->reportComment($commentID);
+		$status = $this->commentManager->reportComment($commentID);
+		echo (!!$status);
 	}
 } 

@@ -11,20 +11,20 @@ class PostManager extends Manager
         return $posts;
     }
 
-    public function getPost($postId)
+    public function getPost($postID)
     {
         $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM posts WHERE id = ?');
-        $req->execute(array($postId));
+        $req->execute(array($postID));
 		$post = $req->fetch();
 		$req->closeCursor();
 		
         return $post;
 	}
 	
-	public function postExist($postId)
+	public function postExist($postID)
 	{
 		$req = $this->db->prepare("SELECT COUNT(*) FROM posts WHERE id = ?");
-		$req->execute(array($postId));
+		$req->execute(array($postID));
 		$count = $req->fetch();
 		$req->closeCursor();
 		
@@ -44,23 +44,23 @@ class PostManager extends Manager
         return $status;
     }
 
-	public function deletepost($postId)
+	public function deletepost($postID)
 	{
 		$req = $this->db->prepare('DELETE FROM posts WHERE id = ?');
-		$status = $req->execute(array($postId));
+		$status = $req->execute(array($postID));
 		$req->closeCursor();
 		
 		return $status;
 	}
 
-	public function updatePost($postId, $title, $content)
+	public function updatePost($postID, $title, $content)
 	{
 		$req = $this->db->prepare('UPDATE posts SET title = ? ,content = ? WHERE id = ?');
 		$status = $req->execute(
 			array(
 				$title,
 				$content,
-				$postId
+				$postID
 		));
 		$req->closeCursor();
 		

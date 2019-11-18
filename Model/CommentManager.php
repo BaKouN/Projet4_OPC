@@ -3,10 +3,10 @@ require_once('Manager.php');
 
 class CommentManager extends Manager
 {
-	public function getComment($commentId)
+	public function getComment($commentID)
     {
         $req = $this->db->prepare('SELECT id, author, comment, reported FROM comments WHERE id = ?');
-        $req->execute(array($commentId));
+        $req->execute(array($commentID));
 		$comment = $req->fetch();
 		$req->closeCursor();
 		
@@ -14,37 +14,37 @@ class CommentManager extends Manager
 	}
 
 
-    public function getComments($postId)
+    public function getComments($postID)
     {
         $req = $this->db->prepare('SELECT id, author, comment, reported, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date');
-		$req->execute(array($postId));
+		$req->execute(array($postID));
 		$comments = $req->fetchAll();
 		$req->closeCursor();
         return $comments;
     }
 
-    public function createComment($postId, $author, $comment)
+    public function createComment($postID, $author, $comment)
     {
         $req = $this->db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-		$status = $req->execute(array($postId, $author, $comment));
+		$status = $req->execute(array($postID, $author, $comment));
 		$req->closeCursor();
         return $status;
     }
 
-	public function commentExist($commentId)
+	public function commentExist($commentID)
 	{
 		$req = $this->db->prepare("SELECT COUNT(*) FROM comments WHERE id = ?");
-		$req->execute(array($commentId));
+		$req->execute(array($commentID));
 		$count = $req->fetch();
 		$req->closeCursor();
 		
 		return !!$count[0];
 	}
 
-	public function deleteComment($commentId)
+	public function deleteComment($commentID)
 	{
 		$req = $this->db->prepare('DELETE FROM comments WHERE id = ?');
-		$status = $req->execute(array($commentId));
+		$status = $req->execute(array($commentID));
 		$req->closeCursor();
 		
 		return $status;
@@ -65,17 +65,17 @@ class CommentManager extends Manager
 				$commentID
 		));
 		$req->closeCursor();
-		
+
 		return $status;
 	}
 
-	public function updateComment($commentId, $content)
+	public function updateComment($commentID, $content)
 	{
-		$req = $this->db->prepare('UPDATE comments SET comment = ? WHERE id = ?');
+		$req = $this->db->prepare('UPDATE comments SET comment = ?, reported = -1 WHERE id = ?');
 		$status = $req->execute(
 			array(
 				$content,
-				$commentId
+				$commentID
 		));
 		$req->closeCursor();
 		

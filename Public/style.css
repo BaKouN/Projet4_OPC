@@ -127,12 +127,12 @@ h2
 .addPost
 {
 	display:flex;
+	height: 75px;
 	flex-direction:column;
 	justify-content: center;
 	align-items: center;
-	align-content:center;
-	color:#2ecc71;
-	border: 3px #2ecc71 dotted;
+	color:#025F20;
+	border: 3px #025F20 dotted;
 	box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
 	transition: box-shadow 0.5s ease-in;
 }
@@ -140,9 +140,27 @@ h2
 .addPost:hover{
 	box-shadow: 	0 0 5px 2px lightgray,
 	0 0 10px 7px white,
-	0 0 15px 10px #2ecc71;
+	0 0 15px 10px #025F20;
 }
 
+.addPost *
+{
+	margin:0;
+	padding:0;
+}
+
+.commentAdmin
+{
+	border:2px red dotted;
+	text-align: center;
+	height:75px;
+	line-height: 75px;
+}
+
+.container
+{
+	margin-top:50px;
+}
 
 
 
@@ -150,10 +168,11 @@ body>ul.notifications
 {
   width: 95%;
   max-width: 250px;
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   overflow: hidden;
+  z-index: 99;
 }
 
 body>ul.notifications>li.message

@@ -1,34 +1,44 @@
 <?php $title = 'Administration du blog'; ?>
 
 <?php ob_start(); ?>
-<p>Panneau Admin</p>
 
-<div class="post">
-	<div class="ticket addPost">
-		<i class="far fa-plus-square"></i>
-		<p>Ajouter un post</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-8">
+			<div class="">
+				<div class="addPost">
+					<i class="far fa-plus-square"></i>
+					<p>Ajouter un post</p>
+				</div>
+			</div>
+			<?php
+			foreach ($posts as $post )
+			{
+			?>
+				<div class="">
+					<div class="">
+						<h2>
+							<?= htmlspecialchars($post['title']) ?>
+						</h2>
+						<br />
+						<div class="postOptions">
+							<p><i class="far fa-eye"></i><input type="button" class="viewPost" data-id="<?=$post['id']?>" name="viewPost" value="Voir le billet"></p>
+							<p><i class="fas fa-edit"></i><input type="button" class="updatePost" data-id="<?=$post['id']?>" name="updatePost" value="Mettre à jour le billet"></em></p>
+							<p><i class="far fa-trash-alt"></i><input type="button" class="deletePost" data-id="<?=$post['id']?>" name="deletePost" value="Supprimer le billet"></p>
+						</div>
+					</div>
+				</div>
+			<?php
+			}
+			?>
+		</div>
+		<div class="commentAdmin col-4">
+			<span>Commentaires reportés</span>
+		</div>
 	</div>
 </div>
-<?php
-foreach ($posts as $post )
-{
-?>
-    <div class="post">
-		<div class="ticket">
-			<h2>
-				<?= htmlspecialchars($post['title']) ?>
-			</h2>
-			<br />
-			<div class="postOptions">
-				<p><i class="far fa-eye"></i><input type="button" class="viewPost" data-id="<?=$post['id']?>" name="viewPost" value="Voir le billet"></p>
-				<p><i class="fas fa-edit"></i><input type="button" class="updatePost" data-id="<?=$post['id']?>" name="updatePost" value="Mettre à jour le billet"></em></p>
-				<p><i class="far fa-trash-alt"></i><input type="button" class="deletePost" data-id="<?=$post['id']?>" name="deletePost" value="Supprimer le billet"></p>
-			</div>
-		</div>
-    </div>
-<?php
-}
-?>
+
 <ul class="notifications"></ul>
 <script>
 

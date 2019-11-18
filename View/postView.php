@@ -67,9 +67,10 @@ $.ajax({  // GET COMMENTS
 				{ ?>
 					<button class="deleteBtn">Supprimer commentaire</button>
 					<button class="updateBtn">Modérer le commentaire</button>
+					` + ((element['reported'] == 1)? `<span class="reportStatus"> /!\\ Commentaire signalé ! /!\\</span>`: ``) + `
 				<?php } 
 				else if (isset($_SESSION['rank']) && $_SESSION['rank'] !== 1){ ?>
-					<button class="reportBtn">Signaler le commentaire</button>
+					` + ((element['reported'] == 0)? `<button class="reportBtn">Signaler le commentaire</button>`: ``) + `
 				<?php } ?>
 			</li>
 		`);
