@@ -79,7 +79,15 @@ $.ajax({  // GET COMMENTS
 		$.ajax({ // DELETE COMMENTS
 		url:'<?= $GLOBALS['websitePath'] ?>/api/post/<?= $postID ?>/comment/' + commentID + '/delete'
 		}).done((data) =>{
+			var container = new UploadContainer($("ul.notifications"));
+			if (data == 1) {
+			container.addMessage("Commentaire supprimé avec succès !");
 			e.target.innerHTML= "Supprimé !";
+			}
+			else {
+				container.addMessage("Erreur ! Veuillez réessayer");
+				e.target.innerHTML= "Erreur, rechargez la page !";
+			}
 		});
 	});
 
@@ -92,16 +100,14 @@ $.ajax({  // GET COMMENTS
 		url:'<?= $GLOBALS['websitePath'] ?>/api/post/<?= $postID ?>/comment/' + commentID + '/update'
 		}).done((data) =>{
 			var container = new UploadContainer($("ul.notifications"));
-			setTimeout(() => {
-				if (data == 1) {
-				container.addMessage("Commentaire modéré avec succès !");
-				e.target.innerHTML= "Modéré !";
-				}
-				else {
-					var modal = container.addMessage("Erreur ! Veuillez réessayer");
-					e.target.innerHTML= "Erreur, rechargez la page !";
-				}
-			}, 1);
+			if (data == 1) {
+			container.addMessage("Commentaire modéré avec succès !");
+			e.target.innerHTML= "Modéré !";
+			}
+			else {
+				container.addMessage("Erreur ! Veuillez réessayer");
+				e.target.innerHTML= "Erreur, rechargez la page !";
+			}
 		});
 	});
 });
