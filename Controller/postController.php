@@ -33,6 +33,7 @@ class PostController
 			throw new Exception('Ce post n\'existe pas');
 		}
 	}
+	
 	public function printPost($postID)
 	{
 			$post = $this->getPost($postID);

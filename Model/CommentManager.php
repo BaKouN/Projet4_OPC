@@ -3,9 +3,20 @@ require_once('Manager.php');
 
 class CommentManager extends Manager
 {
+	public function getComment($commentId)
+    {
+        $req = $this->db->prepare('SELECT id, author, comment, reported FROM comments WHERE id = ?');
+        $req->execute(array($commentId));
+		$comment = $req->fetch();
+		$req->closeCursor();
+		
+        return $comment;
+	}
+
+
     public function getComments($postId)
     {
-        $req = $this->db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date');
+        $req = $this->db->prepare('SELECT id, author, comment, reported, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date');
 		$req->execute(array($postId));
 		$comments = $req->fetchAll();
 		$req->closeCursor();
@@ -44,6 +55,18 @@ class CommentManager extends Manager
 		$req = $this->db->prepare('DELETE * FROM comments WHERE post_id = ?');
 		$status = $req->execute(array($postID));
 		$req->closeCursor();
+	}
+
+	public function reportComment($commentID)
+	{
+		$req = $this->db->prepare('UPDATE comments SET reported = 1 WHERE id = ?');
+		$status = $req->execute(
+			array(
+				$commentID
+		));
+		$req->closeCursor();
+		
+		return $status;
 	}
 
 	public function updateComment($commentId, $content)

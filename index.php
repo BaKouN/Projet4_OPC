@@ -125,6 +125,15 @@ try {
 									$adminController = new AdminController();
 									$commentController->deleteComment($commentID);
 								}
+								else if ($URL[5] === 'report')
+								{
+									if ($_SESSION['connected'] !== true) throw new Exception ("Vous devez etre connecté pour signaler un commentaire ! :)");
+									$commentController->reportComment($commentID);
+								}
+								else
+								{
+									throw new Exeption('Erreur API : pas d\'action valide pour le commentaire');
+								}
 							}
 							else 
 							{
@@ -133,7 +142,7 @@ try {
 						}  
 						else 
 						{
-							$commentController->getComments($postID);
+							$commentController->printCommentsJSON($postID);
 						}
 					}
 					else 

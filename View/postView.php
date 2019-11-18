@@ -67,9 +67,31 @@ $.ajax({  // GET COMMENTS
 				{ ?>
 					<button class="deleteBtn">Supprimer commentaire</button>
 					<button class="updateBtn">Modérer le commentaire</button>
+				<?php } 
+				else if (isset($_SESSION['rank']) && $_SESSION['rank'] !== 1){ ?>
+					<button class="reportBtn">Signaler le commentaire</button>
 				<?php } ?>
 			</li>
 		`);
+	});
+
+	$('.reportBtn').click((e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		let commentID = $(e.target).parent().data("id");
+		$.ajax({ // DELETE COMMENTS
+		url:'<?= $GLOBALS['websitePath'] ?>/api/post/<?= $postID ?>/comment/' + commentID + '/report'
+		}).done((data) =>{
+			var container = new UploadContainer($("ul.notifications"));
+			if (data == 1) {
+			container.addMessage("Commentaire signalé avec succès !");
+			e.target.innerHTML= "Signalé !";
+			}
+			else {
+				container.addMessage("Erreur ! Veuillez réessayer");
+				e.target.innerHTML= "Erreur, rechargez la page !";
+			}
+		});
 	});
 
 	$('.deleteBtn').click((e) => {
