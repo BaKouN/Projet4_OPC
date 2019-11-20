@@ -69,4 +69,10 @@ class CommentController
 		$status = $this->commentManager->reportComment($commentID);
 		echo (!!$status);
 	}
+
+	public function getReportedComments()
+	{
+		$reportedComments = $this->commentManager->getReportedComments();
+		return $reportedComments;
+	}
 } 

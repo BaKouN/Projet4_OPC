@@ -32,6 +32,9 @@ class AdminController
 	{
 		$this->postController = new postController();
 		$posts = $this->postController->getPosts();
+
+		$this->commentController = new commentController();
+		$reportedComments = $this->commentController->getReportedComments();
 		require_once('view/adminPanelView.php');
 	}
 } 

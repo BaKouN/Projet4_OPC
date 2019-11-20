@@ -112,7 +112,7 @@ h2
 	background:#2ecc71;
 }
 
-.postOptions
+.adminOptions
 {
 	display:flex;
 	flex-direction:row;
@@ -151,7 +151,7 @@ h2
 
 .commentAdmin
 {
-	border:2px red dotted;
+	border:3px red dotted;
 	text-align: center;
 	height:75px;
 	line-height: 75px;
@@ -162,7 +162,11 @@ h2
 	margin-top:50px;
 }
 
-
+.testdebug
+{
+	display:flex;
+	flex-direction:row;
+}
 
 body>ul.notifications
 {
