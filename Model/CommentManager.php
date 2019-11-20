@@ -84,7 +84,7 @@ class CommentManager extends Manager
 
 	public function getReportedComments()
     {
-		$req = $this->db->query('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr  FROM comments where reported = 1 ORDER BY comment_date DESC');
+		$req = $this->db->query('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr  FROM comments where reported = 1 ORDER BY comment_date DESC');
 		$reportedComments = $req->fetchAll();
 		$req->closeCursor();
         return $reportedComments;

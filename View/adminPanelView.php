@@ -51,9 +51,9 @@
 						</h2>
 						<p><?= $reportedComment['comment'] ?></p>
 						<div class="adminOptions">
-							<p class="testdebug"><i class="far fa-eye"></i><input type="button" class="viewComment" data-id="<?=$post['id']?>" name="viewComment" value="Voir"></p>
-							<p class="testdebug"><i class="fas fa-gavel"></i><input type="button" class="updateComment" data-id="<?=$reportedComment['id']?>" name="updateComment" value="Moderer"></p>
-							<p class="testdebug"><i class="far fa-trash-alt"></i><input type="button" class="deleteComment" data-id="<?=$reportedComment['id']?>" name="deleteComment" value="Supprimer"></p>
+							<p class="testdebug"><i class="far fa-eye"></i><input type="button" class="viewComment" data-post-id="<?=$reportedComment['post_id']?>" name="viewComment" value="Voir"></p>
+							<p class="testdebug"><i class="fas fa-gavel"></i><input type="button" class="updateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="updateComment" value="Moderer"></p>
+							<p class="testdebug"><i class="far fa-trash-alt"></i><input type="button" class="deleteComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="deleteComment" value="Supprimer"></p>
 						</div>
 					</div>
 				</div>
@@ -126,6 +126,51 @@ $('.deletePost').click((e) => {
 		else
 			var modal = container.addMessage("Erreur ! La bonne suppression du billet ne peut etre confirmée");
 	});	
+});
+
+$('.viewComment').click((e) => {
+	e.preventDefault();
+	e.stopPropagation();
+	window.location.replace(`<?=$GLOBALS['websitePath']?>/post/${e.target.dataset.postId}`);
+});
+
+$('.updateComment').click((e) => {
+	e.preventDefault();
+	e.stopPropagation();
+
+	let commentID = $(e.target).parent().data("id");
+	$.ajax({ // UPDATE COMMENTS
+	url:`<?= $GLOBALS['websitePath'] ?>/api/post/${e.target.dataset.postId}/comment/${e.target.dataset.commentId}/update`
+	}).done((data) =>{
+		var container = new UploadContainer($("ul.notifications"));
+		if (data == 1) {
+		container.addMessage("Commentaire modéré avec succès !");
+		e.target.innerHTML= "Modéré !";
+		}
+		else {
+			container.addMessage("Erreur ! Veuillez réessayer");
+			e.target.innerHTML= "Erreur, rechargez la page !";
+		}
+	});
+});
+
+$('.deleteComment').click((e) => {
+	e.preventDefault();
+	e.stopPropagation();
+	let commentID = $(e.target).parent().data("id");
+	$.ajax({ // DELETE COMMENTS
+	url:`<?= $GLOBALS['websitePath'] ?>/api/post/${e.target.dataset.postId}/comment/${e.target.dataset.commentId}/delete`
+	}).done((data) =>{
+		var container = new UploadContainer($("ul.notifications"));
+		if (data == 1) {
+		container.addMessage("Commentaire supprimé avec succès !");
+		e.target.innerHTML= "Supprimé !";
+		}
+		else {
+			container.addMessage("Erreur ! Veuillez réessayer");
+			e.target.innerHTML= "Erreur, rechargez la page !";
+		}
+	});
 });
 </script>
 
