@@ -114,7 +114,6 @@ html , body
 .fa-facebook:hover, .fa-twitter:hover, .fa-google-plus-g:hover, .fa-instagram:hover, .fa-youtube:hover{
 	color: #d5d5d5;
 }
-
 footer{
 	background-color:#3f3f3f;
 	color:#d5d5d5;
@@ -124,7 +123,6 @@ footer{
 	max-height:50px;
 	margin: 0 .5rem;
 }
-
 hr.light {
 	border-top: 1px solid #d5d5d5;
 	width:75%;
@@ -139,6 +137,27 @@ hr.light-100 {
 	width:100%;
 	margin-top: .8rem;
 	margin-bottom: 1rem;
+}
+
+.login-image {
+	padding:0 !important;
+}
+.login-card {
+	margin: 5% 10%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	min-width: 700px;
+}
+.login-subtitle {
+	font-size:1em;
+}
+.login-card .card-block{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	margin-left:10%;
+}
+.login-main {
+	background:#f2f2f2;
 }
 
 /*---Media Queries --*/

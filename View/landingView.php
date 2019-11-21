@@ -92,7 +92,7 @@
 			<a href="#" class="btn btn-primary">En apprendre plus</a>
 		</div>
 		<div class="col-lg-6">
-			<img src="Public/travel.jpg" class="img-fluid">
+			<img src="Public/travel.jpg" class="img-fluid rounded">
 		</div>
 	</div>
 </div>
@@ -177,7 +177,7 @@
 <div class="container-fluid padding">
 	<div class="row padding">
 		<div class="col-lg-6">
-			<img src="Public/chooseWhereIGo.jpg" class="img-fluid">
+			<img src="Public/chooseWhereIGo.jpg" class="img-fluid rounded">
 		</div>
 		<div class="col-lg-6">
 			<h2>Choisissez ma prochaine destination !</h2>
@@ -206,44 +206,6 @@
 		</div>
 	</div>
 </div>
-
-<!--- Footer -->
-<footer>
-	<div class="container-fluid padding">
-		<div class="row text-center">
-			<div class="col-md-4">
-				<p><img class="footerLogo" src="Public\logo-jf.png">Jean Forteroche</p>
-				<hr class="light">
-				<p>+33 6 54 32 19 87</p>
-				<p>contact@jeanforteroche.blog</p>
-				<p>100 rue de la République</p>
-				<p>69001 Lyon 1er, France</p>
-			</div>
-			<div class="col-md-4">
-				<hr class="light">
-				<h5>Soutenez nous</h5>
-				<hr class="light">
-				<p>Tipee : tipee.com/mockup</p>
-				<p>Utip : util.com/mockup</p>
-				<p>Paypal : paypal.me/mockup</p>
-			</div>
-			<div class="col-md-4">
-				<hr class="light">
-				<h5>Itinéraire</h5>
-				<hr class="light">
-				<p>Tipee : tipee.com/mockup</p>
-				<p>Utip : util.com/mockup</p>
-				<p>Paypal : paypal.me/mockup</p>
-			</div>
-			<div class="col-12">
-				<hr class="light-100">
-				<h5>&copy; Haroun BAKHOUCHE - Harounb.pro</h5>
-			</div>
-		</div>
-	</div>
-</footer>
-
-
 <?php
 $content = ob_get_clean(); 
 require_once('template.php'); ?>

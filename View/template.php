@@ -2,6 +2,7 @@
 <html>
     <head>
 		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="Public\logo-jf.png"/>
 		<meta property="og:locale" content="fr_FR">
 		<meta property="og:title" content="Projet 4 OpenClassRooms">
 		<meta property="og:type" content="website">
@@ -10,7 +11,7 @@
 		<meta property="og:description" content="Projet 4 OpenClassrooms : Blog de l'écrivain Jean Forteroche">
 		<meta property="og:image" content="">
 		<meta name="robots" content="index,follow">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="geo.region" content="FR">
 		<meta name="geo.placename" content="Lyon">
 		<meta name="geo.position" content="45.7500;4.8500">
@@ -37,45 +38,80 @@
     </head>
         
     <body>
-	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="<?=$GLOBALS['websitePath']?>">
-				<img src="<?=$GLOBALS['websitePath']?>/Public/logo-jf.png" width="30" height="30" class="d-inline-block align-top" alt="">
-				Jean Forteroche
-			</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class=" nav-item">
-						<a class="nav-link active" href="<?=$GLOBALS['websitePath']?>">Accueil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/post">Billets</a>
-					</li>
-					<?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
-						if (isset($_SESSION['rank']) && $_SESSION['rank'] == 1)
-						{ ?>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/adminPanel">Panneau d'administration</a>
-					</li>
-						<?php	} ?>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/logout">Deconnexion</a>
-					</li>
-					<?php } else {?>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/login">Connexion</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/register">Inscription</a>
-					</li>
-					<?php } ?>
-				</ul>
+		<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="<?=$GLOBALS['websitePath']?>">
+					<img src="<?=$GLOBALS['websitePath']?>/Public/logo-jf.png" width="30" height="30" class="d-inline-block align-top" alt="">
+					Jean Forteroche
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class=" nav-item">
+							<a class="nav-link active" href="<?=$GLOBALS['websitePath']?>">Accueil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/post">Billets</a>
+						</li>
+						<?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
+							if (isset($_SESSION['rank']) && $_SESSION['rank'] == 1)
+							{ ?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/adminPanel">Panneau d'administration</a>
+						</li>
+							<?php	} ?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/logout">Deconnexion</a>
+						</li>
+						<?php } else {?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/login">Connexion</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/register">Inscription</a>
+						</li>
+						<?php } ?>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</nav>
-        <?= $content ?>
+		</nav>
+		<?= $content ?>
+	<!--- Footer -->
+		<footer>
+			<div class="container-fluid padding">
+				<div class="row text-center">
+					<div class="col-md-4">
+						<p><img class="footerLogo" src="Public\logo-jf.png">Jean Forteroche</p>
+						<hr class="light">
+						<p>+33 6 54 32 19 87</p>
+						<p>contact@jeanforteroche.blog</p>
+						<p>100 rue de la République</p>
+						<p>69001 Lyon 1er, France</p>
+					</div>
+					<div class="col-md-4">
+						<hr class="light">
+						<h5>Soutenez nous</h5>
+						<hr class="light">
+						<p>Tipee : tipee.com/mockup</p>
+						<p>Utip : util.com/mockup</p>
+						<p>Paypal : paypal.me/mockup</p>
+					</div>
+					<div class="col-md-4">
+						<hr class="light">
+						<h5>Itinéraire</h5>
+						<hr class="light">
+						<p>Tipee : tipee.com/mockup</p>
+						<p>Utip : util.com/mockup</p>
+						<p>Paypal : paypal.me/mockup</p>
+					</div>
+					<div class="col-12">
+						<hr class="light-100">
+						<h5>&copy; Haroun BAKHOUCHE - Harounb.pro</h5>
+					</div>
+				</div>
+			</div>
+		</footer>
     </body>
 </html>
