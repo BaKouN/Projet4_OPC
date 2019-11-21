@@ -18,7 +18,7 @@ try {
 	if (empty($URL[0]))
 	{
 		$postController = new postController();
-		$postController->listPosts();
+		$postController->printLandingView();
 	} 
 	else 
 	{

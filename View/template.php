@@ -37,37 +37,44 @@
     </head>
         
     <body>
-	<nav class="navbar navbar-expand-lg navbar-light brand-bg bottom-gold sticky-top shadow rounded">
-		<a class="navbar-brand" href="<?=$GLOBALS['websitePath']?>">
-			<img src="<?=$GLOBALS['websitePath']?>/Public/logo-jf.png" width="30" height="30" class="d-inline-block align-top" alt="">
-			Jean Forteroche
-		</a>
-		<ul class="navbar-nav">
-			<li class=" nav-item">
-				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>">Accueil</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>">Billets</a>
-			</li>
-			<?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
-				if (isset($_SESSION['rank']) && $_SESSION['rank'] == 1)
-				{ ?>
-			<li class="nav-item">
-				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/adminPanel">Panneau d'administration</a>
-			</li>
-				<?php	} ?>
-			<li class="nav-item">
-				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/logout">Deconnexion</a>
-			</li>
-			<?php } else {?>
-			<li class="nav-item">
-				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/login">Connexion</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/register">Inscription</a>
-			</li>
-			<?php } ?>
-		</ul>
+	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="<?=$GLOBALS['websitePath']?>">
+				<img src="<?=$GLOBALS['websitePath']?>/Public/logo-jf.png" width="30" height="30" class="d-inline-block align-top" alt="">
+				Jean Forteroche
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class=" nav-item">
+						<a class="nav-link active" href="<?=$GLOBALS['websitePath']?>">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/post">Billets</a>
+					</li>
+					<?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
+						if (isset($_SESSION['rank']) && $_SESSION['rank'] == 1)
+						{ ?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/adminPanel">Panneau d'administration</a>
+					</li>
+						<?php	} ?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/logout">Deconnexion</a>
+					</li>
+					<?php } else {?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/login">Connexion</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/register">Inscription</a>
+					</li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
 	</nav>
         <?= $content ?>
     </body>

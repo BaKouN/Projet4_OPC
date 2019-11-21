@@ -9,6 +9,11 @@ class PostController
 		$this->postManager = new PostManager();
 	}
 
+	public function printLandingView()
+	{
+		require_once('view/landingView.php');
+	}
+
 	public function listPosts()
 	{
 		$posts = $this->getPosts();
