@@ -1,12 +1,44 @@
 <?php $title = 'Login'; ?>
 
 <?php ob_start(); ?>
-<form method="post" class="loginBox">
+<div class="row login-main">
+	<div class="col-9 mx-auto">
+		<div class="login-card card">
+			<div class="row no-gutters">
+				<div class="login-image col-auto">
+					<img src="https://loremflickr.com/300/700" class="img-fluid" alt="">
+				</div>
+				<div class="col m-5">
+					<div class="card-block px-2">
+						<h4 class="card-title">Créer son compte</h4>
+						<h5 class="card-subtitle text-muted login-subtitle">Tous mes lecteurs ont une place toute particulière dans mon coeur..</h5>
+						<small class="text-muted">Mais ceux inscrits un peu plus quand même..</small>
+						<form class="mt-5">
+							<div class="form-group">
+								<label for="login">Nom d'utilisateur</label>
+								<input type="text" id="login" name="login" class="form-control" placeholder="Entrez votre pseudonyme" required />
+								<small id="emailHelp" class="form-text text-muted">Choisis le bien !</small>
+							</div>
+							<div class="form-group">
+								<label for="password">Mot de passe</label>
+								<input type="password" id="password" name="password" class="form-control" placeholder="Et maintenant le MdP" required />
+								<label for="password2">Confirmer le Mot de passe</label>
+								<input type="password" id="password2" name="password2" class="form-control" placeholder="Exactement le meme !" required />
+							</div>
+							<button type="submit" id="loginSubmit" class="btn btn-primary">Commencer l'aventure</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <form method="post" class="loginBox">
 	<input type="text" id="login" name="login" class="loginInput" placeholder="Pseudonyme" required />
 	<input type="password" id="password" name="password" class="loginInput" placeholder="Mot de Passe" required />
 	<input type="password" id="password2" name="password2" class="loginInput" placeholder="Confirmer le MdP" required />
 	<input type="submit" class="loginInput" value="S'inscrire !" />
-</form>
+</form> -->
 <ul class="notifications"></ul>
 
 <script>
@@ -41,7 +73,7 @@
 		}
 	}
 
-	$('.loginBox>input[type="submit"]').click((e) => {
+	$('#loginSubmit').click((e) => {
 		e.preventDefault();
 		e.stopPropagation();
 		let login = $('#login').val();
