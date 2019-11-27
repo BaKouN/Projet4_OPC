@@ -108,7 +108,7 @@
 </figure>
 
 <!--- Emoji Section -->
-<button class="fun" data-toggle="collapse" data-target="#emoji">click for fun</button>
+<button class="fun" data-toggle="collapse" data-target="#emoji">Intriguant...</button>
 <div id="emoji" class="collapse">
 	<div class="container-fluid padding">
 		<div class="row text-center">
@@ -131,7 +131,7 @@
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
 		<div class="col-12">
-			<h1 class="display-4">Meet the Team</h1>
+			<h1 class="display-4">Rencontrez l'équipe !</h1>
 		</div>
 		<hr>
 	</div>
@@ -144,7 +144,7 @@
 			<div class="card">
 				<img class="card-img-top" src="Public/team/1.png">
 				<div class="card-body">
-					<h4 class="card-title">John Doe</h4>
+					<h4 class="card-title">Jean Forteroche</h4>
 					<p class="card-text">Joe is an Internet entrepreneur with almost 20 years of experience.</p>
 					<a href="#" class="btn btn-outline-secondary">See Profile</a>
 				</div>
@@ -154,7 +154,7 @@
 			<div class="card">
 				<img class="card-img-top" src="Public/team/2.png">
 				<div class="card-body">
-					<h4 class="card-title">John Doe</h4>
+					<h4 class="card-title">Claudie Bouyeure</h4>
 					<p class="card-text">Joe is an Internet entrepreneur with almost 20 years of experience.</p>
 					<a href="#" class="btn btn-outline-secondary">See Profile</a>
 				</div>
@@ -164,7 +164,7 @@
 			<div class="card">
 				<img class="card-img-top" src="Public/team/3.png">
 				<div class="card-body">
-					<h4 class="card-title">John Doe</h4>
+					<h4 class="card-title">Julien Rival</h4>
 					<p class="card-text">Joe is an Internet entrepreneur with almost 20 years of experience.</p>
 					<a href="#" class="btn btn-outline-secondary">See Profile</a>
 				</div>

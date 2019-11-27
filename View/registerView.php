@@ -8,8 +8,8 @@
 				<div class="login-image col-auto">
 					<img src="https://loremflickr.com/300/700" class="img-fluid" alt="">
 				</div>
-				<div class="col m-5">
-					<div class="card-block px-2">
+				<div class="col d-flex justify-content-center align-items-center">
+					<div class="card-block p-5">
 						<h4 class="card-title">Créer son compte</h4>
 						<h5 class="card-subtitle text-muted login-subtitle">Tous mes lecteurs ont une place toute particulière dans mon coeur..</h5>
 						<small class="text-muted">Mais ceux inscrits un peu plus quand même..</small>

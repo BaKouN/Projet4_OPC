@@ -143,21 +143,15 @@ hr.light-100 {
 	padding:0 !important;
 }
 .login-card {
-	margin: 5% 10%;
+	margin: 5% 0%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	min-width: 650px;
 }
 .login-subtitle {
 	font-size:1em;
 }
-.login-card .card-block{
-	position:absolute;
-	top:50%;
-	transform:translateY(-50%);
-	margin-left:10%;
-}
 .login-main {
 	background:#f2f2f2;
+	min-height:600px;
 }
 
 /*---Media Queries --*/
@@ -189,6 +183,11 @@ hr.light-100 {
 	.social a {
 		font-size: 2.5em;
 		padding: 1.2rem;
+	}
+	.login-image {
+		display:none;
+	}
+	.login-card {
 	}
 }
 @media (max-width: 576px) {
