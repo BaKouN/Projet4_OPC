@@ -15,11 +15,13 @@ foreach ($posts as $post )
 				<?= htmlspecialchars($post['title']) ?>
 			</h2>
 			<p><em>le <?= $post['creation_date_fr'] ?></em></p>
-			<p>
-				<?= $postController->shortText(nl2br(htmlspecialchars_decode($post['content']))) ?>
-				<br />
-				<em><a href="<?=$GLOBALS['websitePath']?>/post/<?=$post['id']?>">En savoir plus...</a></em>
-			</p>
+			<div class="ticketContent">
+				<?php 
+					$trimmedText = $postController->shortText(htmlspecialchars_decode($post['content'])); 
+					echo $trimmedText;
+				?>
+			</div>
+			<p><a href="<?=$GLOBALS['websitePath']?>/post/<?=$post['id']?>">En savoir plus...</a></p>
 		</div>
     </div>
 <?php

@@ -132,6 +132,7 @@
 	<div class="row welcome text-center">
 		<div class="col-12">
 			<h1 class="display-4">Rencontrez l'équipe !</h1>
+			<small>Votre écrivain préféré accompagné de ses deux fideles acolytes ! </small>
 		</div>
 		<hr>
 	</div>
@@ -142,20 +143,20 @@
 	<div class="row padding">
 		<div class="col-md-4">
 			<div class="card">
-				<img class="card-img-top" src="Public/team/1.png">
+				<img class="card-img-top" src="Public/team/2.png">
 				<div class="card-body">
-					<h4 class="card-title">Jean Forteroche</h4>
-					<p class="card-text">Joe is an Internet entrepreneur with almost 20 years of experience.</p>
+					<h4 class="card-title">Claudie Bouyeure</h4>
+					<p class="card-text">La photographe suivant Jean sur toutes ses aventures pour figer les plus beaux moments et vous les retranscrire par l'image.</p>
 					<a href="#" class="btn btn-outline-secondary">See Profile</a>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="card">
-				<img class="card-img-top" src="Public/team/2.png">
+				<img class="card-img-top" src="Public/team/1.png">
 				<div class="card-body">
-					<h4 class="card-title">Claudie Bouyeure</h4>
-					<p class="card-text">Joe is an Internet entrepreneur with almost 20 years of experience.</p>
+					<h4 class="card-title">Jean Forteroche</h4>
+					<p class="card-text">Jean Forteroche est un écrivain passionné par la découverte de nouveaux horizons, de paysages époustouflants et de cultures inspirantes.</p>
 					<a href="#" class="btn btn-outline-secondary">See Profile</a>
 				</div>
 			</div>
@@ -165,7 +166,7 @@
 				<img class="card-img-top" src="Public/team/3.png">
 				<div class="card-body">
 					<h4 class="card-title">Julien Rival</h4>
-					<p class="card-text">Joe is an Internet entrepreneur with almost 20 years of experience.</p>
+					<p class="card-text">Son meilleur ami depuis 20 ans, Julien est un pro de la survie en millieu hostile et escortera Jean pour la plupart de ses aventures.</p>
 					<a href="#" class="btn btn-outline-secondary">See Profile</a>
 				</div>
 			</div>
