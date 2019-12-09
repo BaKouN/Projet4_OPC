@@ -2,64 +2,65 @@
 
 <?php ob_start(); ?>
 
-
-<div class="container">
-	<div class="row">
-		<div class="col-7">
-			<div class="">
-				<div class="addPost">
-					<i class="far fa-plus-square"></i>
-					<p>Ajouter un post</p>
-				</div>
-			</div>
-			<?php
-			foreach ($posts as $post )
-			{
-			?>
-				<div>
-					<div class="ticket">
-						<h2>
-							<?= htmlspecialchars($post['title']) ?>
-						</h2>
-						<br />
-						<div class="adminOptions">
-							<p><i class="far fa-eye"></i><input type="button" class="viewPost" data-id="<?=$post['id']?>" name="viewPost" value="Voir le billet"></p>
-							<p><i class="fas fa-edit"></i><input type="button" class="updatePost" data-id="<?=$post['id']?>" name="updatePost" value="Mettre à jour le billet"></p>
-							<p><i class="far fa-trash-alt"></i><input type="button" class="deletePost" data-id="<?=$post['id']?>" name="deletePost" value="Supprimer le billet"></p>
-						</div>
+<div class="container-fluid admin-main">
+	<div class="container">
+		<div class="row">
+			<div class="col-7">
+				<div class="">
+					<div class="addPost">
+						<i class="far fa-plus-square"></i>
+						<p>Ajouter un post</p>
 					</div>
 				</div>
-			<?php
-			}
-			?>
-		</div>
-		<div class="col-5">
-			<div class="">
-				<div class="commentAdmin ">
-					<p>Commentaires reportés</p>
-				</div>
-			</div>
-			<?php
-			foreach ($reportedComments as $reportedComment )
-			{
-			?>
-				<div>
-					<div class="ticket">
-						<h2>
-							<?= htmlspecialchars($reportedComment['author']) ?>
-							<small class="text-muted"><?= htmlspecialchars($reportedComment['comment_date_fr']) ?></small>
-						</h2>
-						<p><?= $reportedComment['comment'] ?></p>
-						<div class="adminOptions">
-							<p class="testdebug"><i class="far fa-eye"></i><input type="button" class="viewComment" data-post-id="<?=$reportedComment['post_id']?>" name="viewComment" value="Voir"></p>
-							<p class="testdebug"><i class="fas fa-gavel"></i><input type="button" class="updateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="updateComment" value="Moderer"></p>
-							<p class="testdebug"><i class="far fa-trash-alt"></i><input type="button" class="deleteComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="deleteComment" value="Supprimer"></p>
+				<?php
+				foreach ($posts as $post )
+				{
+				?>
+					<div>
+						<div class="ticket text-center">
+							<h2>
+								<?= htmlspecialchars($post['title']) ?>
+							</h2>
+							<br />
+							<div class="adminOptions">
+								<p><button class="btn btn-outline-secondary viewPost" data-id="<?=$post['id']?>" name="viewPost"><i class="far fa-eye btn-outline-secondary pr-2"></i>Voir le billet</button></p>
+								<p><button class="btn btn-outline-warning updatePost" data-id="<?=$post['id']?>" name="updatePost"><i class="fas fa-edit btn-outline-warning pr-2"></i>Mettre à jour le billet</button></p>
+								<p><button class="btn btn-outline-danger deletePost" data-id="19" name="deletePost"><i class="far fa-trash-alt btn-outline-danger pr-2" aria-hidden="true"></i>Supprimer le billet</button></p>
+							</div>
 						</div>
 					</div>
+				<?php
+				}
+				?>
+			</div>
+			<div class="col-5">
+				<div class="">
+					<div class="commentAdmin ">
+						<p>Commentaires reportés</p>
+					</div>
 				</div>
-			<?php
-			}
-			?>
+				<?php
+				foreach ($reportedComments as $reportedComment )
+				{
+				?>
+					<div>
+						<div class="ticket">
+							<h2>
+								<?= htmlspecialchars($reportedComment['author']) ?>
+								<small class="text-muted"><?= htmlspecialchars($reportedComment['comment_date_fr']) ?></small>
+							</h2>
+							<p><?= $reportedComment['comment'] ?></p>
+							<div class="adminOptions">
+								<p class="testdebug"><i class="far fa-eye"></i><input type="button" class="viewComment" data-post-id="<?=$reportedComment['post_id']?>" name="viewComment" value="Voir"></p>
+								<p class="testdebug"><i class="fas fa-gavel"></i><input type="button" class="updateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="updateComment" value="Moderer"></p>
+								<p class="testdebug"><i class="far fa-trash-alt"></i><input type="button" class="deleteComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="deleteComment" value="Supprimer"></p>
+							</div>
+						</div>
+					</div>
+				<?php
+				}
+				?>
+			</div>
 		</div>
 	</div>
 </div>

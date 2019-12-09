@@ -154,6 +154,46 @@ hr.light-100 {
 	min-height:600px;
 }
 
+.admin-main {
+	background:#f2f2f2;
+}
+
+.ticket {
+	border: 1px solid grey;
+    padding: 25px;
+	margin: 15px 0;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.adminOptions {
+	display: flex;
+    justify-content: space-around;
+}
+
+.btn-outline-warning:hover i
+{
+	color:#212529;
+	background-color: #ffc107;
+	border-color: #ffc107;
+	transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-outline-danger:hover i
+{
+	color:#FFFFFF;
+	background-color: #dc3545;
+	border-color: #dc3545;
+	transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-outline-secondary:hover i
+{
+	color:#FFFFFF;
+	background-color: #6c757d;
+	border-color: #6c757d;
+	transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 /*---Media Queries --*/
 @media (max-width: 992px) {
 	.social a {
