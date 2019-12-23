@@ -27,6 +27,7 @@
 							</div>
 							<button type="submit" id="loginSubmit" class="btn btn-primary">Commencer l'aventure</button>
 						</form>
+						<a class="link-login" href="<?=$GLOBALS['websitePath']?>/login"><small ><u>Si vous avez déjà un compte, c'est par là !</u></small></a>
 					</div>
 				</div>
 			</div>

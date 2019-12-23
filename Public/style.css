@@ -154,6 +154,15 @@ hr.light-100 {
 	min-height:600px;
 }
 
+.login-card form {
+	margin-bottom: 4rem;
+}
+
+.link-register > small >u, .link-login > small > u
+{
+	color:grey;
+}
+
 .admin-main {
 	background:#f2f2f2;
 }

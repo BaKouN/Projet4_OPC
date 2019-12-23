@@ -24,6 +24,7 @@
 							</div>
 							<button type="submit" id="loginSubmit" class="btn btn-primary">Se connecter</button>
 						</form>
+						<a class="link-register" href="<?=$GLOBALS['websitePath']?>/register"><small ><u>Si vous n'avez pas encore de compte ...</u></small></a>
 					</div>
 				</div>
 			</div>
