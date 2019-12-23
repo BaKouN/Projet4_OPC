@@ -63,6 +63,9 @@
 						</li>
 							<?php	} ?>
 						<li class="nav-item">
+							<a class="nav-link">Content de te revoir, <?= $_SESSION['user'] ?> !</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link" href="<?=$GLOBALS['websitePath']?>/logout">Deconnexion</a>
 						</li>
 						<?php } else {?>

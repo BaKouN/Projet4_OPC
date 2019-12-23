@@ -130,14 +130,19 @@ try {
 									if ($_SESSION['connected'] !== true) throw new Exception ("Vous devez etre connecté pour signaler un commentaire ! :)");
 									$commentController->reportComment($commentID);
 								}
+								else if ($URL[5] === 'validate')
+								{
+									$adminController = new AdminController();
+									$commentController->validateComment($commentID);
+								}
 								else
 								{
-									throw new Exeption('Erreur API : pas d\'action valide pour le commentaire');
+									throw new Exception('Erreur API : pas d\'action valide pour le commentaire');
 								}
 							}
 							else 
 							{
-								throw new Exeption('Erreur API : pas d\'ID pour le commentaire ni de create');
+								throw new Exception('Erreur API : pas d\'ID pour le commentaire ni de create');
 							}
 						}  
 						else 

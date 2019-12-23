@@ -70,6 +70,13 @@ class CommentController
 		echo (!!$status);
 	}
 
+	public function validateComment($commentID)
+	{
+		if (!$this->commentExist($commentID))throw new Exception ('Commentaire inexistant');
+		$status = $this->commentManager->validateComment($commentID);
+		echo (!!$status);
+	}
+
 	public function getReportedComments()
 	{
 		$reportedComments = $this->commentManager->getReportedComments();

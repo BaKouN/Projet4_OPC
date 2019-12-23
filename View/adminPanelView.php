@@ -52,6 +52,7 @@
 							<p><?= $reportedComment['comment'] ?></p>
 							<div class="adminOptions">
 								<p class="testdebug"><i class="far fa-eye"></i><input type="button" class="viewComment" data-post-id="<?=$reportedComment['post_id']?>" name="viewComment" value="Voir"></p>
+								<p class="testdebug"><i class="fas fa-clipboard-check"></i><input type="button" class="validateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="validateComment" value="Valider"></p>
 								<p class="testdebug"><i class="fas fa-gavel"></i><input type="button" class="updateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="updateComment" value="Moderer"></p>
 								<p class="testdebug"><i class="far fa-trash-alt"></i><input type="button" class="deleteComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="deleteComment" value="Supprimer"></p>
 							</div>
@@ -135,13 +136,33 @@ $('.viewComment').click((e) => {
 	window.location.replace(`<?=$GLOBALS['websitePath']?>/post/${e.target.dataset.postId}`);
 });
 
+$('.validateComment').click((e) => {
+	e.preventDefault();
+	e.stopPropagation();
+
+	let commentID = $(e.target).parent().data("id");
+	$.ajax({
+		url:`<?= $GLOBALS['websitePath'] ?>/api/post/${e.target.dataset.postId}/comment/${e.target.dataset.commentId}/validate`
+	}).done((data) =>{
+		var container = new UploadContainer($("ul.notifications"));
+		if (data == 1) {
+		container.addMessage("Commentaire validé avec succès !");
+		e.target.innerHTML= "Validé !";
+		}
+		else {
+			container.addMessage("Erreur ! Veuillez réessayer");
+			e.target.innerHTML= "Erreur, rechargez la page !";
+		}	
+	});
+});
+
 $('.updateComment').click((e) => {
 	e.preventDefault();
 	e.stopPropagation();
 
 	let commentID = $(e.target).parent().data("id");
 	$.ajax({ // UPDATE COMMENTS
-	url:`<?= $GLOBALS['websitePath'] ?>/api/post/${e.target.dataset.postId}/comment/${e.target.dataset.commentId}/update`
+		url:`<?= $GLOBALS['websitePath'] ?>/api/post/${e.target.dataset.postId}/comment/${e.target.dataset.commentId}/update`
 	}).done((data) =>{
 		var container = new UploadContainer($("ul.notifications"));
 		if (data == 1) {
@@ -160,7 +181,7 @@ $('.deleteComment').click((e) => {
 	e.stopPropagation();
 	let commentID = $(e.target).parent().data("id");
 	$.ajax({ // DELETE COMMENTS
-	url:`<?= $GLOBALS['websitePath'] ?>/api/post/${e.target.dataset.postId}/comment/${e.target.dataset.commentId}/delete`
+		url:`<?= $GLOBALS['websitePath'] ?>/api/post/${e.target.dataset.postId}/comment/${e.target.dataset.commentId}/delete`
 	}).done((data) =>{
 		var container = new UploadContainer($("ul.notifications"));
 		if (data == 1) {
