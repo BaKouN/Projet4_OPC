@@ -5,8 +5,6 @@
 <div id="slides" class="carousel slide" data-ride="carousel">
 	<ul class="carousel-indicators">
 		<li data-target="#slides" data-slide-to="0" class="active"></li>
-		<li data-target="#slides" data-slide-to="1"></li>
-		<li data-target="#slides" data-slide-to="2"></li>
 	</ul>
 	<div class="carousel-inner">
 		<div class="carousel-item active">
@@ -15,14 +13,8 @@
 				<h1 class="display-2">Voyage vers l'Alaska</h1>
 				<h3>Un journal de bord en ligne</h3>
 				<button type="button" class="btn btn-outline-light btn-lg">En apprendre plus</button>
-				<button type="button" class="btn btn-primary btn-lg">Lire les billets</button>
+				<a role="button" class="btn btn-primary btn-lg" href="<?=$GLOBALS['websitePath']?>/post">Lire les billets</a>
 			</div>
-		</div>
-		<div class="carousel-item">
-			<img src="Public/background2.png">
-		</div>
-		<div class="carousel-item">
-			<img src="Public/background3.png">
 		</div>
 	</div>
 </div>
@@ -106,27 +98,6 @@
 		</div>
 	</div>
 </figure>
-
-<!--- Emoji Section -->
-<button class="fun" data-toggle="collapse" data-target="#emoji">Intriguant...</button>
-<div id="emoji" class="collapse">
-	<div class="container-fluid padding">
-		<div class="row text-center">
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="Public/gif/panda.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="Public/gif/poo.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="Public/gif/unicorn.gif">
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="Public/gif/chicken.gif">
-			</div>
-		</div>
-	</div>
-</div>
 <!--- Meet the team -->
 <div class="container-fluid padding">
 	<div class="row welcome text-center">
@@ -207,6 +178,7 @@
 		</div>
 	</div>
 </div>
+<script src="Public/landingPage.js"></script>
 <?php
 $content = ob_get_clean(); 
 require_once('template.php'); ?>
