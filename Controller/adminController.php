@@ -35,6 +35,6 @@ class AdminController
 
 		$this->commentController = new commentController();
 		$reportedComments = $this->commentController->getReportedComments();
-		require_once('view/adminPanelView.php');
+		require_once('View/adminPanelView.php');
 	}
 } 

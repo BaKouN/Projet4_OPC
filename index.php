@@ -187,5 +187,5 @@ try {
 	}
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
-	require_once('view/errorView.php');
+	require_once('View/errorView.php');
 }

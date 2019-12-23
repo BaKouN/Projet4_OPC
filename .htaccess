@@ -1,4 +1,28 @@
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /Projet4_OPC/index.php?path=$1 [NC,L,QSA]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ /Projet4_OPC/index.php?path=$1 [NC,L,QSA]
+Options -Indexes -Multiviews
+
+#Order Deny,Allow
+#Deny from all
+#Allow from 127.0.0.1
+
+#<Files />
+#    Order Allow,Deny
+#    Allow from all
+#</Files>
+#<FilesMatch ".*.(css|js)$">
+#    Order Allow,Deny
+#    Allow from all
+#</FilesMatch>
+
+ # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]

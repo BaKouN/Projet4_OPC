@@ -11,13 +11,13 @@ class PostController
 
 	public function printLandingView()
 	{
-		require_once('view/landingView.php');
+		require_once('View/landingView.php');
 	}
 
 	public function listPosts()
 	{
 		$posts = $this->getPosts();
-		require_once('view/listPostsView.php');
+		require_once('View/listPostsView.php');
 	}
 
 	public function getPosts()
@@ -42,7 +42,7 @@ class PostController
 	public function printPost($postID)
 	{
 			$post = $this->getPost($postID);
-			require_once('view/postView.php');
+			require_once('View/postView.php');
 	}
 
 	public function postExist($postID)
@@ -71,7 +71,7 @@ class PostController
 	public function printCreateView()
 	{
 		$this->adminController = new AdminController();
-		require_once('view/createView.php');
+		require_once('View/createView.php');
 	}
 
 	public function printUpdateView($postID)
@@ -80,7 +80,7 @@ class PostController
 		$post = $this->getPost($postID);
 		$postTitle = $post['title'];
 		$postContent = $post['content'];
-		require_once('view/updateView.php');
+		require_once('View/updateView.php');
 	}
 
 	public function createPost($title, $content)
