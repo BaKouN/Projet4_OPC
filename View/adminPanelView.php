@@ -5,7 +5,7 @@
 <div class="container-fluid admin-main">
 	<div class="container">
 		<div class="row">
-			<div class="col-7">
+			<div class="col-12 col-lg-7">
 				<div class="">
 					<div class="addPost">
 						<i class="far fa-plus-square"></i>
@@ -33,7 +33,7 @@
 				}
 				?>
 			</div>
-			<div class="col-5">
+			<div class="col-12 col-lg-5">
 				<div class="">
 					<div class="commentAdmin ">
 						<p>Commentaires reportés</p>

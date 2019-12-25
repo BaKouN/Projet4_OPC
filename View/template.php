@@ -38,7 +38,7 @@
     </head>
         
     <body>
-		<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="<?=$GLOBALS['websitePath']?>">
 					<img src="<?=$GLOBALS['websitePath']?>/Public/logo-jf.png" width="30" height="30" class="d-inline-block align-top" alt="">
