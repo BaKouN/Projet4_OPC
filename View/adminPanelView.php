@@ -1,15 +1,17 @@
 <?php $title = 'Administration du blog'; ?>
 
 <?php ob_start(); ?>
-
+<!--- Contenu Panel Admin --->
 <div class="container-fluid admin-main">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-lg-7">
-				<div class="">
-					<div class="addPost">
+				<div class="addPost">
+					<div class="text-center">
+						<button class="btn btn-outline-success flex-column align-items-center">
 						<i class="far fa-plus-square"></i>
-						<p>Ajouter un post</p>
+						<p>Nouveau billet de blog</p>
+						</button>
 					</div>
 				</div>
 				<?php
@@ -22,10 +24,10 @@
 								<?= htmlspecialchars($post['title']) ?>
 							</h2>
 							<br />
-							<div class="adminOptions">
-								<p><button class="btn btn-outline-secondary viewPost" data-id="<?=$post['id']?>" name="viewPost"><i class="far fa-eye btn-outline-secondary pr-2"></i>Voir le billet</button></p>
-								<p><button class="btn btn-outline-warning updatePost" data-id="<?=$post['id']?>" name="updatePost"><i class="fas fa-edit btn-outline-warning pr-2"></i>Mettre à jour le billet</button></p>
-								<p><button class="btn btn-outline-danger deletePost" data-id="19" name="deletePost"><i class="far fa-trash-alt btn-outline-danger pr-2" aria-hidden="true"></i>Supprimer le billet</button></p>
+							<div class="adminOptions flex-column flex-xl-row">
+								<p><button class="btn btn-secondary viewPost" data-id="<?=$post['id']?>" name="viewPost"><i class="far fa-eye pr-2"></i>Voir le billet</button></p>
+								<p><button class="btn btn-warning updatePost" data-id="<?=$post['id']?>" name="updatePost"><i class="fas fa-edit pr-2"></i>Mettre à jour le billet</button></p>
+								<p><button class="btn btn-danger" data-id="<?=$post['id']?>" name="deletePost" data-toggle="modal" data-target="#deletePostModal"><i class="far fa-trash-alt pr-2" aria-hidden="true"></i>Supprimer le billet</button></p>
 							</div>
 						</div>
 					</div>
@@ -36,37 +38,64 @@
 			<div class="col-12 col-lg-5">
 				<div class="">
 					<div class="commentAdmin ">
-						<p>Commentaires reportés</p>
+						<p class="lead" id="anchorComments">Commentaires reportés</p>
 					</div>
 				</div>
 				<?php
-				foreach ($reportedComments as $reportedComment )
-				{
-				?>
-					<div>
-						<div class="ticket">
-							<h2>
-								<?= htmlspecialchars($reportedComment['author']) ?>
+					foreach ($reportedComments as $reportedComment ) 
+					{
+					?>
+						<div>
+							<div class="ticket text-center">
+								<h2>
+									<?= htmlspecialchars($reportedComment['author']) ?>
+								</h2>
 								<small class="text-muted"><?= htmlspecialchars($reportedComment['comment_date_fr']) ?></small>
-							</h2>
-							<p><?= $reportedComment['comment'] ?></p>
-							<div class="adminOptions">
-								<p class="testdebug"><i class="far fa-eye"></i><input type="button" class="viewComment" data-post-id="<?=$reportedComment['post_id']?>" name="viewComment" value="Voir"></p>
-								<p class="testdebug"><i class="fas fa-clipboard-check"></i><input type="button" class="validateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="validateComment" value="Valider"></p>
-								<p class="testdebug"><i class="fas fa-gavel"></i><input type="button" class="updateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="updateComment" value="Moderer"></p>
-								<p class="testdebug"><i class="far fa-trash-alt"></i><input type="button" class="deleteComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="deleteComment" value="Supprimer"></p>
+								<p><?= $reportedComment['comment'] ?></p>
+								<div class="adminOptions flex-column flex-xl-row">
+									<p><button class="btn btn-secondary viewComment" data-post-id="<?=$reportedComment['post_id']?>" name="viewComment"><i class="far fa-eye pr-2"></i>Voir</button></p>
+									<p><button class="btn btn-success validateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="validateComment" ><i class="fas fa-clipboard-check pr-2"></i>Valider</button></p>
+									<p><button class="btn btn-warning updateComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="updateComment"><i class="fas fa-gavel pr-2"></i>Moderer</button></p>
+									<p><button class="btn btn-danger  deleteComment" data-comment-id="<?=$reportedComment['id']?>" data-post-id="<?=$reportedComment['post_id']?>" name="deleteComment"><i class="far fa-trash-alt  pr-2"></i>Supprimer</button></p>
+								</div>
 							</div>
 						</div>
-					</div>
-				<?php
-				}
-				?>
+					<?php
+					}
+					?>
 			</div>
 		</div>
 	</div>
 </div>
-
+<!--- MODAL DE NOTIFICATIONS --->
 <ul class="notifications"></ul>
+<!--- MODAL DE SUPPRESION DE POST --->
+<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="deletePostModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Suppression d'un billet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Attention ! La suppression d'un billet de blog est irréversible !<br>
+		Etes vous sur de vouloir supprimé le billet suivant : "<?= $post['title'] ?>" ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-danger deletePost"><i class="far fa-trash-alt  pr-2"></i>Supprimer le billet</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--- ANCRE POUR MOBILES --->
+<div class="anchorComments btn btn-dark d-xl-none">
+	<i class="fas fa-arrow-down"></i>
+	<div>Commentaires</div>
+</div>
+<!-- Javascript --->
 <script>
 
 class UploadContainer
@@ -193,6 +222,14 @@ $('.deleteComment').click((e) => {
 			e.target.innerHTML= "Erreur, rechargez la page !";
 		}
 	});
+});
+
+$('.anchorComments').click((e) => {
+	e.preventDefault();
+	e.stopPropagation();
+	$([document.documentElement, document.body]).animate({
+        scrollTop: $("#anchorComments").offset().top
+    }, 1000);
 });
 </script>
 
