@@ -27,7 +27,7 @@
 							<div class="adminOptions flex-column flex-xl-row">
 								<p><button class="btn btn-secondary viewPost" data-id="<?=$post['id']?>" name="viewPost"><i class="far fa-eye pr-2"></i>Voir le billet</button></p>
 								<p><button class="btn btn-warning updatePost" data-id="<?=$post['id']?>" name="updatePost"><i class="fas fa-edit pr-2"></i>Mettre à jour le billet</button></p>
-								<p><button class="btn btn-danger" data-id="<?=$post['id']?>" name="deletePost" data-toggle="modal" data-target="#deletePostModal"><i class="far fa-trash-alt pr-2" aria-hidden="true"></i>Supprimer le billet</button></p>
+								<p><button class="btn btn-danger deleteModalTrigger" data-id="<?=$post['id']?>" name="deletePost" data-toggle="modal" data-target="#deletePostModal"><i class="far fa-trash-alt pr-2" aria-hidden="true"></i>Supprimer le billet</button></p>
 							</div>
 						</div>
 					</div>
@@ -85,7 +85,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-danger deletePost"><i class="far fa-trash-alt  pr-2"></i>Supprimer le billet</button>
+        <button type="button" id="deletePostBtn" class="btn btn-danger" data-dismiss="modal"><i class="far fa-trash-alt  pr-2"></i>Supprimer le billet</button>
       </div>
     </div>
   </div>
@@ -97,6 +97,7 @@
 </div>
 <!-- Javascript --->
 <script>
+
 
 class UploadContainer
 { // MODAL LOGIN
@@ -144,11 +145,9 @@ $('.viewPost').click((e) => {
 	window.location.replace(`<?=$GLOBALS['websitePath']?>/post/${e.target.dataset.id}`);
 });
 
-$('.deletePost').click((e) => {
-	e.preventDefault();
-	e.stopPropagation();
+$('#deletePostBtn').click((e) => {
 	$.ajax({  //DELETE POST
-		url:'<?=$GLOBALS['websitePath']?>/api/post/' + e.target.dataset.id + '/delete',
+		url:`<?=$GLOBALS['websitePath']?>/api/post/${e.target.dataset.id}/delete`,
 		method: "DELETE"
 	}).done((data) =>{
 		var container = new UploadContainer($("ul.notifications"));
@@ -222,6 +221,12 @@ $('.deleteComment').click((e) => {
 			e.target.innerHTML= "Erreur, rechargez la page !";
 		}
 	});
+});
+
+$('.deleteModalTrigger').click(function() {
+	var id = $(this).data('id');
+	console.log(id);
+	$('#deletePostBtn').attr('data-id', id);
 });
 
 $('.anchorComments').click((e) => {
