@@ -27,7 +27,7 @@
 							<div class="adminOptions flex-column flex-xl-row">
 								<p><button class="btn btn-secondary viewPost" data-id="<?=$post['id']?>" name="viewPost"><i class="far fa-eye pr-2"></i>Voir le billet</button></p>
 								<p><button class="btn btn-warning updatePost" data-id="<?=$post['id']?>" name="updatePost"><i class="fas fa-edit pr-2"></i>Mettre à jour le billet</button></p>
-								<p><button class="btn btn-danger deleteModalTrigger" data-id="<?=$post['id']?>" name="deletePost" data-toggle="modal" data-target="#deletePostModal"><i class="far fa-trash-alt pr-2" aria-hidden="true"></i>Supprimer le billet</button></p>
+								<p><button class="btn btn-danger deleteModalTrigger" data-post-title="<?=$post['title']?>" data-id="<?=$post['id']?>" name="deletePost" data-toggle="modal" data-target="#deletePostModal"><i class="far fa-trash-alt pr-2" aria-hidden="true"></i>Supprimer le billet</button></p>
 							</div>
 						</div>
 					</div>
@@ -81,7 +81,7 @@
       </div>
       <div class="modal-body">
         Attention ! La suppression d'un billet de blog est irréversible !<br>
-		Etes vous sur de vouloir supprimé le billet suivant : "<?= $post['title'] ?>" ?
+		Etes vous sur de vouloir supprimé le billet suivant : "..." ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -225,8 +225,10 @@ $('.deleteComment').click((e) => {
 
 $('.deleteModalTrigger').click(function() {
 	var id = $(this).data('id');
+	var title = $(this).data('postTitle');
 	console.log(id);
 	$('#deletePostBtn').attr('data-id', id);
+	$('.modal-body').html(`Attention ! La suppression d'un billet de blog est irréversible !<br> Etes vous sur de vouloir supprimé le billet suivant : <br> "<b>${title}</b>" ?`);
 });
 
 $('.anchorComments').click((e) => {
