@@ -25,6 +25,10 @@ foreach ($posts as $post )
 		</div>
     </div>
 <?php
-}
+} ?>
+<script>
+$('#navPost').addClass("active");
+</script>
+<?php
 $content = ob_get_clean(); 
 require_once('template.php'); ?>

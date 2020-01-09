@@ -34,6 +34,7 @@
 <ul class="notifications"></ul>
 
 <script>
+	$('#navLogin').addClass("active");
 
 	class UploadContainer
 	{ // MODAL LOGIN

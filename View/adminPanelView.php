@@ -91,13 +91,13 @@
   </div>
 </div>
 <!--- ANCRE POUR MOBILES --->
-<div class="anchorComments btn btn-dark d-xl-none">
+<div class="anchorComments btn btn-dark d-lg-none">
 	<i class="fas fa-arrow-down"></i>
 	<div>Commentaires</div>
 </div>
 <!-- Javascript --->
 <script>
-
+$('#navAdminPanel').addClass("active");
 
 class UploadContainer
 { // MODAL LOGIN
