@@ -86,14 +86,13 @@ class PostController
 	public function createPost($title, $content)
 	{
 		$this->adminController = new AdminController();
-		$cleanContent = htmlspecialchars($content);
-		$status = $this->postManager->createPost($title, $cleanContent);
+		$status = $this->postManager->createPost($title, $content);
 		echo (!!$status);
 	}
 
 	public function shortText($input) 
 	{	
-		$length = 100;
+		$length = 200;
 		if (strlen($input) <= $length)
 			return $input;
 	

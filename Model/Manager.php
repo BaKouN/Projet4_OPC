@@ -10,7 +10,7 @@ class Manager
     protected function dbConnect()
     {
 		$GLOBALS['dbConnected']=true;
-        $db = new PDO('mysql:host=localhost;dbname=localhost;charset=utf8', 'root', '');
+        $db = $GLOBALS['workEnvironnement'] === ('dev') ? new PDO('mysql:host=localhost;dbname=localhost;charset=utf8', 'root', '') : new PDO('mysql:host=localhost;dbname=OpenClassrooms_Haroun_P4_PROD_2019;charset=utf8', 'HAROUNP4_ADMIN', '-BddHaroun2019!-');
         return $db;
 	}
 

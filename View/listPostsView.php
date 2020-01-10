@@ -17,7 +17,7 @@ foreach ($posts as $post )
 			<p><em>le <?= $post['creation_date_fr'] ?></em></p>
 			<div class="ticketContent">
 				<?php 
-					$trimmedText = $postController->shortText(htmlspecialchars_decode($post['content'])); 
+					$trimmedText = $postController->shortText(strip_tags($post['content'])); 
 					echo $trimmedText;
 				?>
 			</div>

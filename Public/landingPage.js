@@ -10,7 +10,7 @@ $('#readMore2').click((e) => {
 	e.preventDefault();
 	e.stopPropagation();
 	$([document.documentElement, document.body]).animate({
-        scrollTop: $("#teamDiv").offset().top
+        scrollTop: $("#teamDiv").offset().top-20
     }, 3000);
 });
 
