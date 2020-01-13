@@ -13,7 +13,10 @@ body {
 	min-height:800px;
 }
 
-
+.technoUsed p 
+{
+	text-align:start;
+}
 
 .navbar {
 	padding: .8rem;

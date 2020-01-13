@@ -90,17 +90,17 @@
 		<div class="row padding">
 			<div class="col-md-4">
 				<div class="card h-100">
-					<img class="card-img-top" src="Public/team/2.png">
+					<img class="card-img-top" src="Public/team/6.jpg">
 					<div class="card-body">
-						<h4 class="card-title">Claudie Bouyeure</h4>
-						<p class="card-text">La photographe suivant Jean sur toutes ses aventures pour figer les plus beaux moments et vous les retranscrire par l'image.</p>
+						<h4 class="card-title">Julien Rival</h4>
+						<p class="card-text">Son meilleur ami depuis 20 ans, Julien est un pro de la survie en millieu hostile et escortera Jean pour la plupart de ses aventures.</p>
 						<a href="#" class="btn btn-outline-secondary">See Profile</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="card h-100">
-					<img class="card-img-top" src="Public/team/1.png">
+					<img class="card-img-top" src="Public/team/5.jpg">
 					<div class="card-body">
 						<h4 class="card-title">Jean Forteroche</h4>
 						<p class="card-text">Jean Forteroche est un écrivain passionné par la découverte de nouveaux horizons, de paysages époustouflants et de cultures inspirantes.</p>
@@ -110,10 +110,10 @@
 			</div>
 			<div class="col-md-4">
 				<div class="card h-100">
-					<img class="card-img-top" src="Public/team/3.png">
+					<img class="card-img-top" src="Public/team/4.jpg">
 					<div class="card-body">
-						<h4 class="card-title">Julien Rival</h4>
-						<p class="card-text">Son meilleur ami depuis 20 ans, Julien est un pro de la survie en millieu hostile et escortera Jean pour la plupart de ses aventures.</p>
+						<h4 class="card-title">Claudie Bouyeure</h4>
+						<p class="card-text">La photographe suivant Jean sur toutes ses aventures pour figer les plus beaux moments et vous les retranscrire par l'image.</p>
 						<a href="#" class="btn btn-outline-secondary">See Profile</a>
 					</div>
 				</div>
@@ -152,20 +152,20 @@
 	<!--- Three Column Section -->
 	<div class="container-fluid padding">
 		<div class="row text-center padding">
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<i class="fas fa-bold"></i>
-				<h3>BOOTSTRAP</h3>
-				<p>Built with the latest version of Bootstrap, Bootstrap 4.</p>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4">
+			<div class="col-xs-12 col-sm-6 col-md-4 technoUsed">
 				<i class="fab fa-php"></i>
 				<h3>PHP</h3>
-				<p>Built with the latest version of PHP, PHP5.</p>
+				<p>Un code basé sur la structure Modele Vue Controller (MVC), en Programmation Orienté Objet (POO) permettant une meilleure maintenabilité du code et un systeme de routage clair améliorant le réferencement naturel (SEO)</p>
 			</div>
-			<div class="col-sm-12  col-md-4">
+			<div class="col-xs-12 col-sm-6 col-md-4 technoUsed">
+				<i class="fas fa-bold"></i>
+				<h3>BOOTSTRAP</h3>
+				<p>Une interface utilisateur (UI) simple et responsive facilement crée grâce à l'utilisation de Bootstrap, customisable à souhait et donnant à votre utilisateur un sentiment de sérieux et de sécurité</p>
+			</div>
+			<div class="col-sm-12  col-md-4 technoUsed">
 				<i class="fab fa-js-square"></i>
 				<h3>JAVASCRIPT</h3>
-				<p>Built with the latest version of Javascript, Javascript 7.</p>
+				<p>Utilisé pour permettre une meilleure Expérience Utilisateur (UX) à travers des animations mais aussi grâce à des requêtes AJAX sur un API made from scratch permettant de garder une navigation fluide ! </p>
 			</div>
 		</div>
 	</div>
