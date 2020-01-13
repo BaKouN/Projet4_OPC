@@ -183,6 +183,10 @@ hr.light-100 {
 	background:#f2f2f2;
 }
 
+.brand-bg {
+	background:#f2f2f2;
+}
+
 .addPost button
 {
 	width:90%;
@@ -272,6 +276,57 @@ hr.light-100 {
 	width:33%;
 	margin-top :auto;
 }
+
+.teamSkills {
+	display:flex;
+	flex-direction:row;
+	justify-content:space-evenly;
+	align-items:center;
+	margin-top:auto;
+	font-size:1.5rem;
+}
+
+.offset {
+	color: #3b3b3b;
+	transition: 0.25s;
+	box-shadow: 0.3em 0.3em 0 0 #919191, inset 0.3em 0.3em 0 0 #3b3b3b;
+	cursor: pointer;
+  }
+  .offset:hover, .offset:focus {
+	box-shadow: 0 0 0 0  #3b3b3b, inset 27em 15em 0 0  #3b3b3b;
+	border-color: #3b3b3b;
+	color: #fff;
+  }
+
+  #commentInput {
+	  width:100%;
+	  padding:0.5em;
+	  border:none;
+	  resize:none;
+	  word-wrap: break-word;
+	  box-shadow: 0.3em 0.3em 0 0 #919191, inset 0.3em 0.3em 0 0 #3b3b3b;
+	  transition: 0.75s;
+  }
+
+  #commentInput:focus {
+	box-shadow: 0 0 0 0  #3b3b3b, inset 8em 4em 0 0  #3b3b3b;
+	border-color: #3b3b3b;
+	color: #fff;
+  }
+
+  #comments {
+	  display:flex;
+	  flex-direction:column;
+	  align-items:flex-end;
+  }
+
+  .comments {
+	  width:80%;
+	  list-style-type: none;
+	  height:auto;
+	  border: 1px black solid;
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 
 /*
 Extra small (xs) devices (portrait phones, less than 576px)

@@ -94,7 +94,11 @@
 					<div class="card-body">
 						<h4 class="card-title">Julien Rival</h4>
 						<p class="card-text">Son meilleur ami depuis 20 ans, Julien est un pro de la survie en millieu hostile et escortera Jean pour la plupart de ses aventures.</p>
-						<a href="#" class="btn btn-outline-secondary">See Profile</a>
+						<div class="teamSkills">	
+							<i class="fas fa-paw"></i>
+							<span>|</span>
+							<i class="fas fa-first-aid"></i>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -104,7 +108,11 @@
 					<div class="card-body">
 						<h4 class="card-title">Jean Forteroche</h4>
 						<p class="card-text">Jean Forteroche est un écrivain passionné par la découverte de nouveaux horizons, de paysages époustouflants et de cultures inspirantes.</p>
-						<a href="#" class="btn btn-outline-secondary">See Profile</a>
+						<div class="teamSkills">	
+							<i class="fas fa-pen"></i>
+							<span>|</span>
+							<i class="fas fa-hat-cowboy-side"></i>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -114,7 +122,11 @@
 					<div class="card-body">
 						<h4 class="card-title">Claudie Bouyeure</h4>
 						<p class="card-text">La photographe suivant Jean sur toutes ses aventures pour figer les plus beaux moments et vous les retranscrire par l'image.</p>
-						<a href="#" class="btn btn-outline-secondary">See Profile</a>
+						<div class="teamSkills">	
+							<i class="fas fa-camera-retro"></i>
+							<span>|</span>
+							<i class="fas fa-language"></i>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,23 +1,28 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<div class="container">
-	<div class="ticket postCard">
-		<h2><?= htmlspecialchars($post['title']);?></h2>
-		<em><?= $post['creation_date_fr'];?></em>
-		<p><?= nl2br(htmlspecialchars_decode($post['content']));?></p>
+<div class="container-fluid brand-bg">
+	<div class="container">
+		<div class="ticket postCard">
+			<h2><?= htmlspecialchars($post['title']);?></h2>
+			<em><?= $post['creation_date_fr'];?></em>
+			<p><?= nl2br(htmlspecialchars_decode($post['content']));?></p>
+		</div>
+		<div class="commentSection">
+			<div class="mb-1">
+				<div class="input-group">
+					<input type="text" id="author" name="author" class="form-control" placeholder="Pseudonyme">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary postBtn" type="button">Commenter</button>
+					</div>
+				</div>
+			</div>
+			<textarea id="commentInput"></textarea>
+		</div>
 	</div>
-	<ul class="notifications"></ul>
-	<label for='author'>Pseudonyme : </label>
-	<input type=text id='author' name='author'>
-	<textarea id='trumbowyg-demo'></textarea>
-	<button type='button' class='postBtn'>Commenter</button>
 </div>
+<ul class="notifications"></ul>
 <script>
-
-$('#trumbowyg-demo').trumbowyg({ // Transformation de la div en WYSIWYG
-	lang: 'fr'
-});
 
 class UploadContainer
 { // MODAL LOGIN
@@ -61,14 +66,14 @@ $.ajax({  // GET COMMENTS
 	`);
 	data.forEach(element => {
 		$("#comments").append(`
-			<li class="comments" data-id="` + element['id']+ `">
-				<p class="author">` + element['author'] + `</p>
-				<p class="commentDate">` + element['comment_date_fr'] + `</p>
-				<p class="commentContent">` + element['comment'] + `</p>
+			<li class="comments p-3 my-2" data-id="` + element['id']+ `">
+				<p class="author"><strong>` + element['author'] + `</strong></p>
+				<p class="commentContent lead">` + element['comment'] + `</p>
+				<p class="commentDate small">le ` + element['comment_date_fr'] + `</p>
 				<?php if (isset($_SESSION['rank']) && $_SESSION['rank'] == 1)
 				{ ?>
-					<button class="deleteBtn">Supprimer commentaire</button>
-					<button class="updateBtn">Modérer le commentaire</button>
+					<button class="deleteBtn btn btn-danger">Supprimer commentaire</button>
+					<button class="updateBtn btn btn-warning">Modérer le commentaire</button>
 					` + ((element['reported'] == 1)? `<span class="reportStatus"> /!\\ Commentaire signalé ! /!\\</span>`: ``) + `
 				<?php } 
 				else if (isset($_SESSION['rank']) && $_SESSION['rank'] !== 1){ ?>
@@ -140,7 +145,7 @@ $.ajax({  // GET COMMENTS
 $('.postBtn').click(() => // POST COMMENT ON CLICK
 {
 	let author = $('#author').val();
-	let content = $('#trumbowyg-demo').trumbowyg('html');
+	let content = $('#commentInput').val();
 	if (!author.length || !content.length) return;
 	$.ajax({
 		url: '<?= $GLOBALS['websitePath'] ?>/api/post/<?= $postID ?>/comment/create',
@@ -165,7 +170,6 @@ $('.postBtn').click(() => // POST COMMENT ON CLICK
 	});
 });
 </script>
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once('template.php'); ?>
