@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <div class="container">
-	<div class="ticket">
+	<div class="ticket postCard">
 		<h2><?= htmlspecialchars($post['title']);?></h2>
 		<em><?= $post['creation_date_fr'];?></em>
 		<p><?= nl2br(htmlspecialchars_decode($post['content']));?></p>

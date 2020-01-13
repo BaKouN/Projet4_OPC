@@ -16,7 +16,9 @@
 				<p><em>le <?= $post['creation_date_fr'] ?></em></p>
 				<div class="ticketContent">
 					<?php 
-						$trimmedText = $postController->shortText(strip_tags($post['content'])); 
+						$decodedContent = htmlspecialchars_decode($post['content']);
+						$strippedContent = strip_tags($decodedContent);
+						$trimmedText = $postController->shortText($strippedContent); 
 						echo $trimmedText;
 					?>
 				</div>

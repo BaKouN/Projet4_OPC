@@ -18,6 +18,11 @@ body {
 	text-align:start;
 }
 
+.postCard img {
+	max-width:100%;
+	height:auto;
+}
+
 .navbar {
 	padding: .8rem;
 	min-height: 75px;

@@ -86,7 +86,8 @@ class PostController
 	public function createPost($title, $content)
 	{
 		$this->adminController = new AdminController();
-		$status = $this->postManager->createPost($title, $content);
+		$cleanContent = htmlspecialchars($content);
+		$status = $this->postManager->createPost($title, $cleanContent);
 		echo (!!$status);
 	}
 
