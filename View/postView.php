@@ -1,16 +1,18 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<div class="ticket">
-	<h2><?= htmlspecialchars($post['title']);?></h2>
-	<em><?= $post['creation_date_fr'];?></em>
-	<p><?= nl2br(htmlspecialchars_decode($post['content']));?></p>
+<div class="container">
+	<div class="ticket">
+		<h2><?= htmlspecialchars($post['title']);?></h2>
+		<em><?= $post['creation_date_fr'];?></em>
+		<p><?= nl2br(htmlspecialchars_decode($post['content']));?></p>
+	</div>
+	<ul class="notifications"></ul>
+	<label for='author'>Pseudonyme : </label>
+	<input type=text id='author' name='author'>
+	<textarea id='trumbowyg-demo'></textarea>
+	<button type='button' class='postBtn'>Commenter</button>
 </div>
-<ul class="notifications"></ul>
-<label for='author'>Pseudonyme : </label>
-<input type=text id='author' name='author'>
-<textarea id='trumbowyg-demo'></textarea>
-<button type='button' class='postBtn'>Commenter</button>
 <script>
 
 $('#trumbowyg-demo').trumbowyg({ // Transformation de la div en WYSIWYG

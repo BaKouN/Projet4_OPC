@@ -6,6 +6,15 @@ html , body
 	color: #222;
 }
 
+body {
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+	min-height:800px;
+}
+
+
+
 .navbar {
 	padding: .8rem;
 	min-height: 75px;

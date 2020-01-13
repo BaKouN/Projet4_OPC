@@ -34,12 +34,6 @@
 		</div>
 	</div>
 </div>
-<!-- <form method="post" class="loginBox">
-	<input type="text" id="login" name="login" class="loginInput" placeholder="Pseudonyme" required />
-	<input type="password" id="password" name="password" class="loginInput" placeholder="Mot de Passe" required />
-	<input type="password" id="password2" name="password2" class="loginInput" placeholder="Confirmer le MdP" required />
-	<input type="submit" class="loginInput" value="S'inscrire !" />
-</form> -->
 <ul class="notifications"></ul>
 
 <script>

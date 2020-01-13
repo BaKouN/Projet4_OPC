@@ -1,10 +1,12 @@
 <?php $title = 'Creer un nouveau billet'; ?>
 
 <?php ob_start(); ?>
-<label for='title'>Titre :</label>
-<input type=text id='title' name='title'>
-<textarea id='trumbowyg-demo'></textarea>
-<button type='button' class='postBtn'>Poster ce nouveau billet</button>
+<div class="container">
+	<label for='title'>Titre :</label>
+	<input type=text id='title' name='title'>
+	<textarea id='trumbowyg-demo'></textarea>
+	<button type='button' class='postBtn'>Poster ce nouveau billet</button>
+</div>
 <script>
 	$('#trumbowyg-demo').trumbowyg({ // Transformation de la div en WYSIWYG
 		lang: 'fr'

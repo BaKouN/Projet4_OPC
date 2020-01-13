@@ -1,10 +1,13 @@
 <?php $title = 'Modifier un billet existant'; ?>
 
 <?php ob_start(); ?>
-<label for='title'>Titre :</label>
-<input type=text id='title' name='title' value="<?= $postTitle ?>">
-<textarea id='trumbowyg-demo'><?= $postContent ?></textarea>
-<button type='button' class='postBtn'>Mettre à jour ce billet</button>
+<div class="container">
+	<label for='title'>Titre :</label>
+	<input type=text id='title' name='title' value="<?= $postTitle ?>">
+	<textarea id='trumbowyg-demo'><?= $postContent ?></textarea>
+	<button type='button' class='postBtn'>Mettre à jour ce billet</button>
+</div>
+
 <script>
 	$('#trumbowyg-demo').trumbowyg({ // Transformation de la div en WYSIWYG
 		lang: 'fr'

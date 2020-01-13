@@ -80,7 +80,6 @@
 			</div>
 		</nav>
 		<?= $content ?>
-	<!--- Footer -->
 		<footer>
 			<div class="container-fluid padding">
 				<div class="row text-center">
