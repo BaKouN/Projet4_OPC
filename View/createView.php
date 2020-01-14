@@ -63,10 +63,15 @@
 			}
 		}).done((data) =>{
 		var container = new UploadContainer($("ul.notifications"));
-		if (data == 1) 
+		if (data == 1) {
 			var modal = container.addMessage("Billet mis en ligne avec succès !");
-		else
+			setTimeout(() => {
+				document.location.href = '<?= $GLOBALS['websitePath'] ?>/adminPanel';
+			}, 1500);
+		}
+		else {
 			var modal = container.addMessage("Erreur ! Vérifiez la bonne mise en ligne du billet !");
+		}
 		});
 	});
 </script>
