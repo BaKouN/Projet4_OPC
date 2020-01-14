@@ -313,7 +313,7 @@ hr.light-100 {
   }
 
   #commentInput:focus {
-	box-shadow: 0 0 0 0  #3b3b3b, inset 8em 4em 0 0  #3b3b3b;
+	box-shadow: 0 0 0 0  #3b3b3b, inset 15em 7em 0 0  #3b3b3b;
 	border-color: #3b3b3b;
 	color: #fff;
   }

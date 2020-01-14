@@ -4,7 +4,7 @@ class Manager
 {
 	function __construct()
 	{
-			$this->db = $this->dbConnect();
+		$this->db = $this->dbConnect();
 	}
 	
     protected function dbConnect()

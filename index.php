@@ -8,7 +8,7 @@ require_once('Model/Manager.php');
 
 $GLOBALS['dbConnected']=false;
 $GLOBALS['workEnvironnement'] = 'dev';
-$GLOBALS['workEnvironnement'] === ('dev') ? $GLOBALS['websitePath'] = 'http://localhost/Projet4_OPC' : $GLOBALS['websitePath'] = 'https://p4.harounb.site';
+$GLOBALS['workEnvironnement'] === ('dev') ? $GLOBALS['websitePath'] = 'http://localhost:80/Projet4_OPC' : $GLOBALS['websitePath'] = 'https://p4.harounb.site';
 
 $URL = explode('/',$_SERVER['REQUEST_URI']);
 array_shift($URL);
