@@ -16,7 +16,8 @@
 					<div class="ticketContent">
 						<?php 
 							$decodedContent = htmlspecialchars_decode($post['content']);
-							$strippedContent = strip_tags($decodedContent);
+							$spacedContent = str_replace('<', ' <', $decodedContent);
+							$strippedContent = strip_tags($spacedContent);
 							$trimmedText = $postController->shortText($strippedContent); 
 							echo $trimmedText;
 						?>

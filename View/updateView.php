@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 <div class="container-fluid brand-bg py-5">
 	<div class="container">
-		<div class="input-group input-group-lg">
+		<div class="input-group titleInput">
 			<div class="input-group-prepend">
 				<span class="input-group-text">Titre du billet :</span>
 			</div>

@@ -205,6 +205,10 @@ hr.light-100 {
 	word-break: break-word;
 }
 
+.ticketContent {
+	word-wrap: break-word;
+}
+
 .ticket h2 {
 	word-break: break-word;
 }
@@ -326,6 +330,10 @@ hr.light-100 {
 	  height:auto;
 	  border: 1px black solid;
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .titleInput input {
+	  width:50%;
   }
 
 /*
